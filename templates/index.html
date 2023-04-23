@@ -4,13 +4,9 @@
 <html>
 {% block head %}
     <head>
-        <meta charset="UTF-8"/>
-        <link rel="stylesheet" href={% static "css/styles.css" %}/>
-        <link rel="icon" href="brba logo.png"/>
-        <script
-                src="https://kit.fontawesome.com/a314ef0890.js"
-                crossorigin="anonymous"
-        ></script>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" href="styles.css" />
+        <link rel="icon" href="" /> 
         <title>Cinema World</title>
     </head>
 {% endblock head %}
@@ -18,34 +14,19 @@
 
 {% block content %}
     <body>
-    <header>
-        <div class="container-header"></div>
-    </header>
-
-    <nav class="nav">
+        <nav class="nav">
         <ul>
             <li>
-                <img id="logo-img" src={% static "logo/CinemaWorldLogo.png" %} alt="Logo"/>
+                <img id="logo-img" src="../static/CinemaWorldLogo.png" alt="Logo" />
             </li>
             <li>
-                <a href="#">Кінотеатри</a>
+            <a href="#">Кінотеатри</a>
             </li>
             <li>
-                <a href="#">Сеанси</a>
-                <ul>
-                    <li>
-                        <a href="#">Cooking</a>
-                        <ul>
-                            <li><a href="#">With Jesse</a></li>
-                            <li><a href="#">Without Jesse</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">Spy</a></li>
-                    <li><a href="#">Operation</a></li>
-                </ul>
+            <a href="#">Сеанси</a>
             </li>
             <li>
-                <a href="#">Локації</a>
+            <a href="#">Локації</a>
             </li>
             <li>
                 <a href="#">Про нас</a>
@@ -53,26 +34,109 @@
             <li>
                 <a href="#">Контакти</a>
             </li>
-        </ul>
-    </nav>
-
-    <div class="text">
-        <h1>Доступні сеанси</h1>
-    </div>
-
-    <div class="movies-container">
-
-    </div>
-
-    <footer>
-        <div class="footer-text">
-            <div class="footer-h5">
-                <h5>Copyright 2023</h5>
-                <h5>Website created by students</h5>
+            <div class="log-in">
+            <a href="#">Увійти</a>
             </div>
-            </a>
+        </ul>
+        </nav>
+
+        <div class="text">
+        <h1>Доступні сеанси</h1>
         </div>
-    </footer>
+
+        <div class="available-movies-container">
+        
+        </div>
+
+        <div class="text">
+        <h1>Майбутні сеанси</h1>
+        </div>
+
+        <div class="future-movies-container">
+        <div class="dungeonsDragons-div">
+            <img id="dungeonsDragons-img" src="../static/dungeonsDragons.png" alt="dungeonsDragons">
+            <h3>Дракони й підземелля</h3>
+        </div>
+        <div class="mavka-div">
+            <img id="mavka-img" src="../static/mavka.png" alt="mavka"> 
+            <h3>Мавка: Лісова пісня</h3>
+        </div>
+        <div class="65m y ago-div">
+            <img id="65-img" src="../static/65m.y.ago.png" alt="65m.y.ago"> 
+            <h3>65 років до нашої ери</h3>
+        </div>
+        </div>
+
+        <div class="text">
+        <h1>Чому саме ми?</h1>
+        </div>
+
+        <div class="why-we-container1">
+        <div class="why-we-text">
+            <p>Наші сучасні кінозали не залишать нікого байдужим, 
+            ми створили найбільш зручні умови для вашого прибування у наших кінозалах включивш в них м’які сидіння, 
+            а також використали ліжка замість крісел у Люкс залах задля вашого комфорту
+            </p>
+        </div>
+        <div class="why-we-png">
+            <img id="image-1" src="../static/image-1.png" alt="image-1"> 
+        </div>
+        </div>
+
+        <div class="why-we-container2">
+        <div class="why-we-png">
+            <img id="image-2" src="../static/image-2.png" alt="image-2"> 
+        </div>
+        <div class="why-we-text">
+            <p>Маємо найзручніші крісла з високоякісних матеріалів щоб перегляд фільмів здавався 10 хвилинною прогулянкою, 
+            а задоволення було одразу помітне
+            </p>
+        </div>
+        </div>
+
+        <div class="why-we-container3">
+        <div class="why-we-text">
+            <p>Наші зали забезпечені високоякісними звуковими установками, щоб зробити поглиблення у фільм більш захопливим
+            </p>
+        </div>
+        <div class="why-we-png">
+            <img id="image-3" src="../static/image-3.png" alt="image-3">
+        </div>
+        </div>
+
+        <div class="why-we-container4">
+        <div class="why-we-png">
+            <img id="image-4" src="../static/image-4.png" alt="image-4"> 
+        </div>
+        <div class="why-we-text">
+            <p>Маємо найзручніші крісла з високоякісних матеріалів щоб перегляд фільмів здавався 10 хвилинною прогулянкою, 
+            а задоволення було одразу помітне
+            </p>
+        </div>
+        </div>
+
+        <div class="text">
+        <h1>Як нас знайти?</h1>
+        </div>
+
+        <div class="text">
+        <p>Ми знаходимося за адресою вулиця Милославська, 10а, ТЦ “Милославський”</p>
+        </div>
+
+        <footer>
+        <div class="footer-container">
+            <div class="left-part">          
+            <a href="#">Сеанси</a>
+            <a href="#">Про нас</a>
+            <a href="#">Контакти</a>
+            </div>
+            <div class="right-part">
+            <h5>Зателефонуйте нам</h5>
+            <h5>+380 66 666 66 66</h5>
+            <h5>Copyright 2023</h5>
+            </div>
+        </div>
+        </footer>
     </body>
 
 {% endblock content %}
