@@ -109,6 +109,23 @@ body {
   margin-top: 0;
 }
 
+.text-1 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  margin-left: 15%;
+  margin-bottom: 0;
+  padding: 20px 0; 
+}
+body > div.available-movies-container > div {
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+}
+#eapps-slider-9a733f6a-ae9e-4385-ab0e-5011d7ef350a > div > div:nth-child(2) {
+  display: none;
+}
+
 .future-movies-container {
   width: 75%;
   margin: auto;
@@ -211,6 +228,11 @@ body {
 #image-4 {
   width: 450px;
   height: 300px;
+}
+.google-map-div {
+  width: 55%;
+  position: relative;
+  left: 23%;
 }
 
 /* footer */
