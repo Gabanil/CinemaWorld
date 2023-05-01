@@ -62,6 +62,7 @@ class Movie(models.Model):
     actors = models.ManyToManyField(Actor, verbose_name="Актори", related_name="film_actor")
     genres = models.ManyToManyField(Genre, verbose_name="Жанри")
     world_premiere = models.DateField("Премʼєра в світі", default=date.today)
+    duration = models.IntegerField("Тривалість", default=0)
 
     category = models.ForeignKey(
         Category, verbose_name="Категорія", on_delete=models.SET_NULL, null=True
@@ -98,7 +99,6 @@ class MovieShots(models.Model):
         verbose_name_plural = "Кадри з фільму"
 
 
-
 # class Reviews(models.Model):
 #     """Отзывы"""
 #     email = models.EmailField()
@@ -115,3 +115,54 @@ class MovieShots(models.Model):
 #     class Meta:
 #         verbose_name = "Отзыв"
 #         verbose_name_plural = "Отзывы"
+
+
+class Hall_type(models.Model):
+    type = models.CharField("Тип залу", max_length=20)
+
+    def __str__(self):
+        return self.type
+    class Meta:
+        verbose_name = "Тип залу"
+        verbose_name_plural = "Тип залів"
+
+class Hall(models.Model):
+    number = models.IntegerField("Номер залу", unique=True)
+    stage = models.IntegerField("Етаж")
+    places = models.IntegerField("Кіл-ть місць")
+
+    type = models.ForeignKey(
+        Hall_type, verbose_name="Тип залу", on_delete=models.DO_NOTHING
+    )
+
+    def __str__(self):
+        return self.number
+
+    class Meta:
+        verbose_name = "Зал"
+        verbose_name_plural = "Зали"
+
+
+class Reservation(models.Model):
+    client_name = models.CharField("Імʼя клієнта", max_length=100)
+    place_num = models.IntegerField("Місце")
+    paid = models.BooleanField("Оплачено")
+    date_resevation = models.DateTimeField("Дата та час")
+
+    def __str__(self):
+        return self.client_name, self.place_num
+
+    class Meta:
+        verbose_name = "Резервація"
+        verbose_name_plural = "Резервації"
+
+
+class Session(models.Model):
+    hall_id = models.ManyToManyField(Hall, verbose_name="Зал")
+    movie_id = models.ManyToManyField(Movie, verbose_name="Фільм")
+    start = models.DateTimeField("Початок")
+    end = models.DateTimeField("Кінець")
+
+    class Meta:
+        verbose_name = "Сеанс"
+        verbose_name_plural = "Сеанси"
