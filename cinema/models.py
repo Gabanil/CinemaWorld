@@ -1,5 +1,6 @@
 from django.db import models
 from datetime import date
+import datetime
 
 from django.urls import reverse
 
@@ -122,9 +123,11 @@ class Hall_type(models.Model):
 
     def __str__(self):
         return self.type
+
     class Meta:
         verbose_name = "Тип залу"
         verbose_name_plural = "Тип залів"
+
 
 class Hall(models.Model):
     number = models.IntegerField("Номер залу", unique=True)
@@ -136,7 +139,7 @@ class Hall(models.Model):
     )
 
     def __str__(self):
-        return self.number
+        return "Зал " + str(self.number)
 
     class Meta:
         verbose_name = "Зал"
@@ -161,8 +164,12 @@ class Session(models.Model):
     hall_id = models.ManyToManyField(Hall, verbose_name="Зал")
     movie_id = models.ManyToManyField(Movie, verbose_name="Фільм")
     start = models.DateTimeField("Початок")
-    end = models.DateTimeField("Кінець")
+    end = models.DateTimeField("Кінець", blank=True, null=True,)
 
     class Meta:
         verbose_name = "Сеанс"
         verbose_name_plural = "Сеанси"
+    #
+    # def save(self, *args, **kwargs):
+    #     self.end = self.start + datetime.timedelta(int(self.movie_id.get(id = self.movie_id).duration))
+    #     super(Session, self).save(*args, **kwargs)
