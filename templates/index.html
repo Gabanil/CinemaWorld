@@ -52,18 +52,22 @@
     </div>
 
     <div class="future-movies-container">
-      <div class="dungeonsDragons-div">
-        <img id="dungeonsDragons-img" src="../static/dungeonsDragons.png" alt="dungeonsDragons">
-        <h3>Дракони й підземелля</h3>
-      </div>
-      <div class="mavka-div">
-        <img id="mavka-img" src="../static/mavka.png" alt="mavka">
-        <h3>Мавка: Лісова пісня</h3>
-      </div>
-      <div class="65m y ago-div">
-        <img id="65-img" src="../static/65m.y.ago.png" alt="65m.y.ago">
-        <h3>65 років до нашої ери</h3>
-      </div>
+
+        {% for movie in movies %}
+            <div class="dungeonsDragons-div">
+                <img id="dungeonsDragons-img" src="media\{{ movie.poster }}" alt="dungeonsDragons">
+                <h3>{{ movie.title }}</h3>
+              </div>
+        {% endfor %}
+
+{#      <div class="mavka-div">#}
+{#        <img id="mavka-img" src="../static/mavka.png" alt="mavka">#}
+{#        <h3>Мавка: Лісова пісня</h3>#}
+{#      </div>#}
+{#      <div class="65m y ago-div">#}
+{#        <img id="65-img" src="../static/65m.y.ago.png" alt="65m.y.ago">#}
+{#        <h3>65 років до нашої ери</h3>#}
+{#      </div>#}
     </div>
 
     <div class="text">
