@@ -6,6 +6,8 @@
         <link rel="stylesheet" href="../static/css/styles.css" />
         <link rel="icon" href="" /> 
         <title>Cinema World</title>
+        <link rel="stylesheet" href="../static/css/swiper-bundle.min.css" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
     </head>
 {% endblock head %}
 
@@ -38,20 +40,66 @@
       </ul>
     </nav>
 
-    <div class="text-1">
+    <div class="text">
       <h1>Доступні сеанси</h1>
     </div>
+    
+    <!-- slider-aviable-movies -->
+    <section class="slider-aviable-movies"> 
+      <button class="pre-btn"><img src="../static/arrow.png" alt=""></button>
+      <button class="nxt-btn"><img src="../static/arrow.png" alt=""></button>
+      <div class="product-container">
+          <div class="product-card">
+              <div class="product-image">
+                  <img src="../static/joker.png" class="product-thumb" alt="">
+                  <button class="card-btn1">Замовити квиток</button>
+                  <button class="card-btn2">Опис</button>
+              </div>
+          </div>
+          <div class="product-card">
+              <div class="product-image">
+                  <img src="../static/itt.png" class="product-thumb" alt="">
+                  <button class="card-btn1">Замовити квиток</button>
+                  <button class="card-btn2">Опис</button>
+              </div>
+          </div>
+          <div class="product-card">
+            <div class="product-image">
+                <img src="../static/wasabi.png" class="product-thumb" alt="">
+                <button class="card-btn1">Замовити квиток</button>
+                <button class="card-btn2">Опис</button>
+            </div>
+          </div>
+          <div class="product-card">
+            <div class="product-image">
+                <img src="../static/joker.png" class="product-thumb" alt="">
+                <button class="card-btn1">Замовити квиток</button>
+                <button class="card-btn2">Опис</button>
+            </div>
+          </div>
+        <div class="product-card">
+            <div class="product-image">
+                <img src="../static/itt.png" class="product-thumb" alt="">
+                <button class="card-btn1">Замовити квиток</button>
+                <button class="card-btn2">Опис</button>
+            </div>
+        </div>
+        <div class="product-card">
+          <div class="product-image">
+              <img src="../static/joker.png" class="product-thumb" alt="">
+              <button class="card-btn1">Замовити квиток</button>
+              <button class="card-btn2">Опис</button>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <div class="available-movies-container">
-      <script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>
-      <div class="elfsight-app-9a733f6a-ae9e-4385-ab0e-5011d7ef350a"></div>
-    </div>
 
     <div class="text">
       <h1>Майбутні сеанси</h1>
     </div>
 
-    <div class="future-movies-container">
+    <!-- <div class="future-movies-container">
 
         {% for movie in movies %}
             <div class="dungeonsDragons-div">
@@ -68,7 +116,60 @@
 {#        <img id="65-img" src="../static/65m.y.ago.png" alt="65m.y.ago">#}
 {#        <h3>65 років до нашої ери</h3>#}
 {#      </div>#}
-    </div>
+    </div> -->
+
+    <!-- slider-future-movies -->
+    <section class="slider-future-movies"> 
+      <button class="pre-btn"><img src="../static/arrow.png" alt=""></button>
+      <button class="nxt-btn"><img src="../static/arrow.png" alt=""></button>
+      <div class="product-container">
+          <div class="product-card">
+              <div class="product-image">
+                  <img src="../static/dungeonsDragons.png" class="product-thumb" alt="">
+                  <button class="card-btn1">Замовити квиток</button>
+                  <button class="card-btn2">Опис</button>
+              </div>
+          </div>
+          <div class="product-card">
+              <div class="product-image">
+                  <img src="../static/mavka.png" class="product-thumb" alt="">
+                  <button class="card-btn1">Замовити квиток</button>
+                  <button class="card-btn2">Опис</button>
+              </div>
+          </div>
+          <div class="product-card">
+            <div class="product-image">
+                <img src="../static/65m.y.ago.png" class="product-thumb" alt="">
+                <button class="card-btn1">Замовити квиток</button>
+                <button class="card-btn2">Опис</button>
+            </div>
+          </div>
+          <div class="product-card">
+            <div class="product-image">
+                <img src="../static/dungeonsDragons.png" class="product-thumb" alt="">
+                <button class="card-btn1">Замовити квиток</button>
+                <button class="card-btn2">Опис</button>
+            </div>
+        </div>
+        <div class="product-card">
+            <div class="product-image">
+                <img src="../static/mavka.png" class="product-thumb" alt="">
+                <button class="card-btn1">Замовити квиток</button>
+                <button class="card-btn2">Опис</button>
+            </div>
+        </div>
+        <div class="product-card">
+          <div class="product-image">
+              <img src="../static/65m.y.ago.png" class="product-thumb" alt="">
+              <button class="card-btn1">Замовити квиток</button>
+              <button class="card-btn2">Опис</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script src="../static/js/script.js"></script>
+
 
     <div class="text">
       <h1>Чому саме ми?</h1>
