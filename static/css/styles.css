@@ -6,21 +6,6 @@ body {
 }
 
 
-
-.container-header a i.fa {
-  position: absolute;
-  top: 30%;
-  left: 90%;
-  font-size: 30px;
-  color: red;
-  transition: all 0.3s ease;
-}
-.container-header a i.fa:hover {
-  font-size: 35px;
-  transition: all 0.3s ease;
-}
-
-
 /*navigation*/
 .nav {
   padding: 10px 0 10px 0;
@@ -93,6 +78,9 @@ body {
   font-size: medium;
   transition: all 0.3s ease;
 }
+
+
+
 .text {
   padding: 20px 0; 
 }
@@ -229,7 +217,7 @@ body {
   opacity: 1;
 }
 
-.collection-container {
+/* .collection-container {
   width: 100%;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -260,7 +248,7 @@ body {
 .collection:nth-child(3) {
   grid-column: span 2;
   margin-bottom: 10px;
-}
+} */
 
 
 /*future movies*/

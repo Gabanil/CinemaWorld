@@ -1,6 +1,7 @@
 const productContainers = [...document.querySelectorAll('.product-container')];
 const nxtBtn = [...document.querySelectorAll('.nxt-btn')];
 const preBtn = [...document.querySelectorAll('.pre-btn')];
+const cardBtn2 = [...document.getElementsByClassName('card-btn2')];
 
 productContainers.forEach((item, i) => {
     let containerDimensions = item.getBoundingClientRect();
@@ -21,7 +22,7 @@ productContainers.forEach((item, i) => {
     });
   });
   
-  function smoothScroll(element, scrollAmount, duration) {
+function smoothScroll(element, scrollAmount, duration) {
     const start = element.scrollLeft;
     const startTime = performance.now();
   
@@ -38,4 +39,9 @@ productContainers.forEach((item, i) => {
     }
   
     window.requestAnimationFrame(step);
+}
+
+function redirectToDescription() {
+  // Перейти на нову сторінку
+  window.location.href = 'description.html';
 }
