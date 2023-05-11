@@ -19,10 +19,16 @@ from django.urls import path
 from django.views.generic import TemplateView
 from django.conf import settings
 from django.conf.urls.static import static
+from cinema.views import MovieAPIView, ResevationAPIView, MovieDetailAPIView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("", TemplateView.as_view(template_name="index.html")),
+    path("", MovieAPIView.index),
+    path("reservation/", ResevationAPIView.index),
+    path("detail/", MovieDetailAPIView.index)
+
+
+    # path("api/v1/", MovieAPIView.as_view(), name="api_test") начало апишки
 ]
 
 if settings.DEBUG:

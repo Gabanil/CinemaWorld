@@ -1,6 +1,6 @@
 from django.db import models
 from datetime import date
-import datetime
+from datetime import timedelta
 
 from django.urls import reverse
 
@@ -72,8 +72,7 @@ class Movie(models.Model):
     draft = models.BooleanField("Черновик", default=False)
 
     def __str__(self):
-        return self.title
-
+        return f"{self.title}, {self.duration} min"
     def get_absolute_url(self):
         return reverse("movie_detail", kwargs={"slug": self.url})
 
@@ -161,15 +160,21 @@ class Reservation(models.Model):
 
 
 class Session(models.Model):
-    hall_id = models.ManyToManyField(Hall, verbose_name="Зал")
-    movie_id = models.ManyToManyField(Movie, verbose_name="Фільм")
+    hall_id = models.ForeignKey(Hall, verbose_name="Зал", on_delete=models.SET_NULL, null=True)
+    movie_id = models.ForeignKey(Movie, verbose_name="Фільм", on_delete=models.SET_NULL, null=True)
     start = models.DateTimeField("Початок")
-    end = models.DateTimeField("Кінець", blank=True, null=True,)
+    end = models.DateTimeField("Кінець", blank=True, null=True)
+    # default = start + timedelta(minutes=movie_id.duration)
 
     class Meta:
         verbose_name = "Сеанс"
         verbose_name_plural = "Сеанси"
-    #
-    # def save(self, *args, **kwargs):
-    #     self.end = self.start + datetime.timedelta(int(self.movie_id.get(id = self.movie_id).duration))
-    #     super(Session, self).save(*args, **kwargs)
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        duration = self.movie_id.duration
+        self.end = self.start + timedelta(minutes=duration)
+        self.__class__.objects.filter(pk=self.pk).update(end=self.end)
+
+    def __str__(self):
+        return f"Сеанс {self.movie_id}, start at {self.start}, in {self.hall_id}"

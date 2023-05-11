@@ -1,0 +1,77 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+{% block head %}
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" type="text/css" href="{% static 'css/description-styles.css' %}"/>
+        <link rel="icon" href="" /> 
+        <title>Cinema World</title>
+    </head>
+{% endblock head %}
+
+
+{% block content %}
+<body>
+    <nav class="nav">
+      <ul>
+        <li>
+            <img id="logo-img" src="../static/logo/CinemaWorldLogo.png" alt="Logo" />
+        </li>
+        <li>
+          <a href="#">Кінотеатри</a>
+        </li>
+        <li>
+          <a href="#">Сеанси</a>
+        </li>
+        <li>
+          <a href="#">Локації</a>
+        </li>
+        <li>
+            <a href="#">Про нас</a>
+        </li>
+        <li>
+            <a href="#">Контакти</a>
+        </li>
+        <div class="log-in">
+          <a href="#">Увійти</a>
+        </div>
+      </ul>
+    </nav>
+
+    
+
+    <div class="template">
+        <div class="template-left-part">
+            <img id="mavka-img" src="../static/mavka.png" alt="mavka">
+            <h2>Мавка: Лісова пісня</h2>
+        </div>
+        <div class="template-right-part">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tempor placerat ligula non posuere. Vivamus tempus eros pellentesque, dapibus nibh sed, mattis dolor. Sed eu fermentum nibh. Quisque odio neque, scelerisque eu condimentum et, tincidunt non risus. Nullam scelerisque ultrices fringilla. Praesent rutrum hendrerit enim iaculis maximus. Quisque pharetra gravida augue vel convallis.</p>
+            <p>Режисер: </p>
+            <p>Актори: </p>
+            <p>Тривалість: </p>
+            <button>Придбати квиток</button>
+        </div>
+    </div>
+
+
+
+    <footer>
+      <div class="footer-container">
+        <div class="left-part">          
+          <a href="#">Сеанси</a>
+          <a href="#">Про нас</a>
+          <a href="#">Контакти</a>
+        </div>
+        <div class="right-part">
+          <h5>Зателефонуйте нам</h5>
+          <h5>+380 66 666 66 66</h5>
+          <h5>Copyright 2023</h5>
+        </div>
+      </div>
+    </footer>
+  </body>
+{% endblock content %}
+</html>
