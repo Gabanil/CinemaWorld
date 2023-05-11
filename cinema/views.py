@@ -9,6 +9,18 @@ class MovieAPIView(APIView):
         movies = Movie.objects.all()
         return render(request, "index.html", {"movies": movies})
 
+
+class MovieDetailAPIView(APIView):
+    def index(request):
+        movies = Movie.objects.all()
+        return render(request, "description.html")
+
+
+class ResevationAPIView(APIView):
+    def index(request):
+        movies = Movie.objects.all()
+        return render(request, "reservation.html")
+
  #    шаблон вьюшки
  # @swagger_auto_schema(
     #     operation_summary="Get a dish by slug",
