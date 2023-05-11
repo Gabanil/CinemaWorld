@@ -50,48 +50,16 @@
       <button class="pre-btn"><img src="../static/arrow.png" alt=""></button>
       <button class="nxt-btn"><img src="../static/arrow.png" alt=""></button>
       <div class="product-container">
+          {% for movie in movies %}
           <div class="product-card">
               <div class="product-image">
-                  <img src="../static/joker.png" class="product-thumb" alt="">
+                  <img src="media/{{ movie.poster }}" class="product-thumb" alt="">
                   <button class="card-btn1">Замовити квиток</button>
                   <button class="card-btn2">Опис</button>
               </div>
           </div>
-          <div class="product-card">
-              <div class="product-image">
-                  <img src="../static/itt.png" class="product-thumb" alt="">
-                  <button class="card-btn1">Замовити квиток</button>
-                  <button class="card-btn2">Опис</button>
-              </div>
-          </div>
-          <div class="product-card">
-            <div class="product-image">
-                <img src="../static/wasabi.png" class="product-thumb" alt="">
-                <button class="card-btn1">Замовити квиток</button>
-                <button class="card-btn2">Опис</button>
-            </div>
-          </div>
-          <div class="product-card">
-            <div class="product-image">
-                <img src="../static/joker.png" class="product-thumb" alt="">
-                <button class="card-btn1">Замовити квиток</button>
-                <button class="card-btn2">Опис</button>
-            </div>
-          </div>
-        <div class="product-card">
-            <div class="product-image">
-                <img src="../static/itt.png" class="product-thumb" alt="">
-                <button class="card-btn1">Замовити квиток</button>
-                <button class="card-btn2">Опис</button>
-            </div>
-        </div>
-        <div class="product-card">
-          <div class="product-image">
-              <img src="../static/joker.png" class="product-thumb" alt="">
-              <button class="card-btn1">Замовити квиток</button>
-              <button class="card-btn2">Опис</button>
-          </div>
-        </div>
+          {% endfor %}
+{#          /#}
       </div>
     </section>
 
