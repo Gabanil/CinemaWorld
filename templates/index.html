@@ -50,49 +50,15 @@
         <button class="pre-btn"><img src="../static/arrow.png" alt=""></button>
         <button class="nxt-btn"><img src="../static/arrow.png" alt=""></button>
         <div class="product-container">
-            <div class="product-card">
-                <div class="product-image">
-                    <<<<<<< HEAD
-                    <img src="../static/joker.png" class="product-thumb" alt="">
-                    <button class="card-btn1">Придбати квиток</button>
-                    <button class="card-btn2" onclick="redirectToDescription()">Опис</button>
+            {% for movie in movies %}
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="media/{{ movie.poster }}" class="product-thumb" alt="">
+                        <button class="card-btn1">Придбати квиток</button>
+                        <button class="card-btn2" onclick="redirectToDescription()">Опис</button>
+                    </div>
                 </div>
-            </div>
-            <div class="product-card">
-                <div class="product-image">
-                    <img src="../static/itt.png" class="product-thumb" alt="">
-                    <button class="card-btn1">Придбати квиток</button>
-                    <button class="card-btn2" onclick="redirectToDescription()">Опис</button>
-                </div>
-            </div>
-            <div class="product-card">
-                <div class="product-image">
-                    <img src="../static/wasabi.png" class="product-thumb" alt="">
-                    <button class="card-btn1">Придбати квиток</button>
-                    <button class="card-btn2" onclick="redirectToDescription()">Опис</button>
-                </div>
-            </div>
-            <div class="product-card">
-                <div class="product-image">
-                    <img src="../static/joker.png" class="product-thumb" alt="">
-                    <button class="card-btn1">Придбати квиток</button>
-                    <button class="card-btn2" onclick="redirectToDescription()">Опис</button>
-                </div>
-            </div>
-            <div class="product-card">
-                <div class="product-image">
-                    <img src="../static/itt.png" class="product-thumb" alt="">
-                    <button class="card-btn1">Придбати квиток</button>
-                    <button class="card-btn2" onclick="redirectToDescription()">Опис</button>
-                </div>
-            </div>
-            <div class="product-card">
-                <div class="product-image">
-                    <img src="../static/joker.png" class="product-thumb" alt="">
-                    <button class="card-btn1">Придбати квиток</button>
-                    <button class="card-btn2" onclick="redirectToDescription()">Опис</button>
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </section>
 
@@ -106,71 +72,11 @@
         {% for movie in movies %}
             <div class="dungeonsDragons-div">
                 <a href="movie/{{ movie.pk }}/">{{ movie.pk }}</a>
-                <img id="dungeonsDragons-img" src="media\{{ movie.poster }}" alt="dungeonsDragons">
+                <img id="dungeonsDragons-img" src="media/{{ movie.poster }}" alt="dungeonsDragons">
                 <h3>{{ movie.title }}</h3>
             </div>
         {% endfor %}
-
-        {#      <div class="mavka-div">#}
-        {#        <img id="mavka-img" src="../static/mavka.png" alt="mavka">#}
-        {#        <h3>Мавка: Лісова пісня</h3>#}
-        {#      </div>#}
-        {#      <div class="65m y ago-div">#}
-        {#        <img id="65-img" src="../static/65m.y.ago.png" alt="65m.y.ago">#}
-        {#        <h3>65 років до нашої ери</h3>#}
-        {#      </div>#}
     </div>
-    -->
-
-    <!-- slider-future-movies -->
-    <section class="slider-future-movies">
-        <button class="pre-btn"><img src="../static/arrow.png" alt=""></button>
-        <button class="nxt-btn"><img src="../static/arrow.png" alt=""></button>
-        <div class="product-container">
-            <div class="product-card">
-                <div class="product-image">
-                    <img src="../static/dungeonsDragons.png" class="product-thumb" alt="">
-                    <button class="card-btn1">Замовити квиток</button>
-                    <button class="card-btn2" onclick="redirectToDescription()">Опис</button>
-                </div>
-            </div>
-            <div class="product-card">
-                <div class="product-image">
-                    <img src="../static/mavka.png" class="product-thumb" alt="">
-                    <button class="card-btn1">Замовити квиток</button>
-                    <button class="card-btn2" onclick="redirectToDescription()">Опис</button>
-                </div>
-            </div>
-            <div class="product-card">
-                <div class="product-image">
-                    <img src="../static/65m.y.ago.png" class="product-thumb" alt="">
-                    <button class="card-btn1">Замовити квиток</button>
-                    <button class="card-btn2" onclick="redirectToDescription()">Опис</button>
-                </div>
-            </div>
-            <div class="product-card">
-                <div class="product-image">
-                    <img src="../static/dungeonsDragons.png" class="product-thumb" alt="">
-                    <button class="card-btn1">Замовити квиток</button>
-                    <button class="card-btn2" onclick="redirectToDescription()">Опис</button>
-                </div>
-            </div>
-            <div class="product-card">
-                <div class="product-image">
-                    <img src="../static/mavka.png" class="product-thumb" alt="">
-                    <button class="card-btn1">Замовити квиток</button>
-                    <button class="card-btn2" onclick="redirectToDescription()">Опис</button>
-                </div>
-            </div>
-            <div class="product-card">
-                <div class="product-image">
-                    <img src="../static/65m.y.ago.png" class="product-thumb" alt="">
-                    <button class="card-btn1">Замовити квиток</button>
-                    <button class="card-btn2" onclick="redirectToDescription()">Опис</button>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <script src="../static/js/script.js"></script>
 
