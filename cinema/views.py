@@ -11,9 +11,11 @@ class MovieAPIView(APIView):
 
 
 class MovieDetailAPIView(APIView):
-    def index(request):
-        movies = Movie.objects.all()
-        return render(request, "description.html")
+    def get(self, request, pk):
+        movie = Movie.objects.get(pk=pk)
+        print(movie.poster)
+        return render(request, "description.html", {"movie": movie})
+        # return Response(movie)
 
 
 class ResevationAPIView(APIView):
