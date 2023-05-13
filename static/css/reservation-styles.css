@@ -90,7 +90,7 @@
   .main-reserv-div {
     padding-top: 50px;
     display: flex;
-    margin: 0 auto;
+    margin: auto;
     font-family: Arial, Helvetica, sans-serif;
   }
   .reserv-left-part {
@@ -98,8 +98,8 @@
     color: black;
   }
   .reserv-left-part img {
-    width: 300px;
-    height: 400px;
+    width: 400px;
+    height: 500px;
   }
   .reserv-right-part {
     margin-left: 50px;
@@ -130,8 +130,8 @@
   
   .seat {
     background-color: #c4c4c4;
-    height: 12px;
-    width: 15px;
+    height: 18px;
+    width: 20px;
     margin: 3px;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
@@ -203,6 +203,7 @@
     margin: 5px 0;
     color: black;
     text-align: center;
+    font-size: 21px;
   }
   
   p.text span {

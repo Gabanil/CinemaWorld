@@ -3,6 +3,8 @@ body {
   font-size: 16px;
   margin: 0;
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 
@@ -83,17 +85,17 @@ body {
 
 .text {
   padding: 20px 0; 
+  width: 760px;
+  margin: 0 auto;
 }
 .text h1 {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 25px;
-  margin-left: 23%;
   margin-bottom: 0;
 }
 .text p {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 16px;
-  margin-left: 23%;
   margin-bottom: 0;
   margin-top: 0;
 }
@@ -116,6 +118,7 @@ body {
   display: flex;
   place-items: center;
   align-items: center;
+  justify-content: center;
   overflow-x: auto;
 }
 
@@ -128,6 +131,15 @@ body {
   width: 270px;
   height: 370px;
   margin-right: 10px;
+  transition: all 0.3s ease;
+}
+.product-card:hover {
+  flex: 0 0 auto;
+  width: 270px;
+  height: 370px;
+  margin-right: 10px;
+  transition: all 0.3s ease;
+  opacity: 0.7;
 }
 
 .product-image {
@@ -359,8 +371,13 @@ body {
 }
 .google-map-div {
   width: 55%;
-  position: relative;
-  left: 23%;
+
+
+  width: 55%;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* footer */

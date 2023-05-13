@@ -5,7 +5,7 @@
 {% block head %}
     <head>
         <meta charset="UTF-8" />
-        <link rel="stylesheet" type="text/css" href="{% static 'css/description-styles.css' %}"/>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/reservation-styles.css' %}"/>
         <link rel="icon" href="" /> 
         <title>Cinema World</title>
     </head>
@@ -17,7 +17,7 @@
     <nav class="nav">
       <ul>
         <li>
-            <img id="logo-img" src="../static/logo/CinemaWorldLogo.png" alt="Logo" />
+            <img id="logo-img" src="{% static 'logo/CinemaWorldLogo.png' %}" alt="Logo" />
         </li>
         <li>
           <a href="#">Кінотеатри</a>
@@ -42,7 +42,7 @@
 
     <div class="main-reserv-div">
         <div class="reserv-left-part">
-            <img id="mavka-img" src="../static/mavka.png" alt="mavka">
+            <img id="movie-img" src="{% static 'image-1.png' %}" alt="mavka">
             <h2>Мавка: Лісова пісня</h2>
         </div>
         <div class="reserv-right-part">
@@ -50,17 +50,17 @@
                   <ul class="showcase">
                     <li>
                       <div class="seat"></div>
-                      <small>Вільно</small>
+                      <p>Вільно</p>
                     </li>
               
                     <li>
                       <div class="seat selected"></div>
-                      <small>Обрано</small>
+                      <p>Обрано</p>
                     </li>
               
                     <li>
                       <div class="seat occupied"></div>
-                      <small>Зайнято</small>
+                      <p>Зайнято</p>
                     </li>
                   </ul>
               
@@ -142,7 +142,7 @@
         </div>  
     </div>
 
-    <script src="../static/js/reservation-script.js"></script>
+    <script src="{% static 'js/reservation-script.js' %}"></script>
 
 
     <footer>

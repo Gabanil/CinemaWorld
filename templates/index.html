@@ -5,7 +5,7 @@
 {% block head %}
     <head>
         <meta charset="UTF-8" />
-        <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}"/>
 
         <link rel="icon" href="" /> 
         <title>Cinema World</title>
@@ -18,7 +18,7 @@
     <nav class="nav">
       <ul>
         <li>
-            <img id="logo-img" src="../static/logo/CinemaWorldLogo.png" alt="Logo" />
+            <img id="logo-img" src="{% static 'logo/CinemaWorldLogo.png' %}" alt="Logo" />
         </li>
         <li>
           <a href="#">Кінотеатри</a>
@@ -47,50 +47,44 @@
     
     <!-- slider-aviable-movies -->
     <section class="slider-aviable-movies"> 
-      <button class="pre-btn"><img src="../static/arrow.png" alt=""></button>
-      <button class="nxt-btn"><img src="../static/arrow.png" alt=""></button>
+      <button class="pre-btn"><img src="{% static 'arrow.png' %}" alt=""></button>
+      <button class="nxt-btn"><img src="{% static 'arrow.png' %}" alt=""></button>
       <div class="product-container">
           <div class="product-card">
               <div class="product-image">
-<<<<<<< HEAD
-                  <img src="../static/joker.png" class="product-thumb" alt="">
-                  <button class="card-btn1">Придбати квиток</button>
-                  <button class="card-btn2" onclick="redirectToDescription()">Опис</button>
               </div>
           </div>
           <div class="product-card">
               <div class="product-image">
-                  <img src="../static/itt.png" class="product-thumb" alt="">
-                  <button class="card-btn1">Придбати квиток</button>
-                  <button class="card-btn2" onclick="redirectToDescription()">Опис</button>
+<<<<<<< HEAD
+                  <a href="description.html"><img src="{% static 'joker.png' %}" class="product-thumb" alt=""></a>
+                  <!-- <button class="card-btn1">Придбати квиток</button>
+                  <button class="card-btn2" onclick="redirectToDescription()">Опис</button> -->
+              </div>
+          </div>
+          <div class="product-card">
+              <div class="product-image">
+                <a href="description.html"><img src="{% static 'itt.png' %}" class="product-thumb" alt=""></a>
               </div>
           </div>
           <div class="product-card">
             <div class="product-image">
-                <img src="../static/wasabi.png" class="product-thumb" alt="">
-                <button class="card-btn1">Придбати квиток</button>
-                <button class="card-btn2" onclick="redirectToDescription()">Опис</button>
+              <a href="description.html"><img src="{% static 'wasabi.png' %}" class="product-thumb" alt=""></a>
             </div>
           </div>
           <div class="product-card">
             <div class="product-image">
-                <img src="../static/joker.png" class="product-thumb" alt="">
-                <button class="card-btn1">Придбати квиток</button>
-                <button class="card-btn2" onclick="redirectToDescription()">Опис</button>
+              <a href="description.html"><img src="../static/joker.png" class="product-thumb" alt=""></a>
             </div>
           </div>
         <div class="product-card">
             <div class="product-image">
-                <img src="../static/itt.png" class="product-thumb" alt="">
-                <button class="card-btn1">Придбати квиток</button>
-                <button class="card-btn2" onclick="redirectToDescription()">Опис</button>
+              <a href="description.html"><img src="../static/itt.png" class="product-thumb" alt=""></a>
             </div>
         </div>
         <div class="product-card">
           <div class="product-image">
-              <img src="../static/joker.png" class="product-thumb" alt="">
-              <button class="card-btn1">Придбати квиток</button>
-              <button class="card-btn2" onclick="redirectToDescription()">Опис</button>
+            <a href="description.html"><img src="../static/wasabi.png" class="product-thumb" alt=""></a>
           </div>
         </div>
       </div>
@@ -122,55 +116,47 @@
 
     <!-- slider-future-movies -->
     <section class="slider-future-movies"> 
-      <button class="pre-btn"><img src="../static/arrow.png" alt=""></button>
-      <button class="nxt-btn"><img src="../static/arrow.png" alt=""></button>
+      <button class="pre-btn"><img src="{% static 'arrow.png' %}" alt=""></button>
+      <button class="nxt-btn"><img src="{% static 'arrow.png' %}" alt=""></button>
       <div class="product-container">
           <div class="product-card">
               <div class="product-image">
-                  <img src="../static/dungeonsDragons.png" class="product-thumb" alt="">
-                  <button class="card-btn1">Замовити квиток</button>
-                  <button class="card-btn2" onclick="redirectToDescription()">Опис</button>
               </div>
           </div>
           <div class="product-card">
               <div class="product-image">
-                  <img src="../static/mavka.png" class="product-thumb" alt="">
-                  <button class="card-btn1">Замовити квиток</button>
-                  <button class="card-btn2" onclick="redirectToDescription()">Опис</button>
+                <a href="description.html"><img src="{% static 'dungeonsDragons.png' %}" class="product-thumb" alt=""></a>
+              </div>
+          </div>
+          <div class="product-card">
+              <div class="product-image">
+                <a href="description.html"><img src="{% static 'mavka.png' %}" class="product-thumb" alt=""></a>
               </div>
           </div>
           <div class="product-card">
             <div class="product-image">
-                <img src="../static/65m.y.ago.png" class="product-thumb" alt="">
-                <button class="card-btn1">Замовити квиток</button>
-                <button class="card-btn2" onclick="redirectToDescription()">Опис</button>
+              <a href="description.html"><img src="{% static '65m.y.ago.png' %}" class="product-thumb" alt=""></a>
             </div>
           </div>
           <div class="product-card">
             <div class="product-image">
-                <img src="../static/dungeonsDragons.png" class="product-thumb" alt="">
-                <button class="card-btn1">Замовити квиток</button>
-                <button class="card-btn2" onclick="redirectToDescription()">Опис</button>
+              <a href="description.html"><img src="../static/dungeonsDragons.png" class="product-thumb" alt=""></a>
             </div>
         </div>
         <div class="product-card">
             <div class="product-image">
-                <img src="../static/mavka.png" class="product-thumb" alt="">
-                <button class="card-btn1">Замовити квиток</button>
-                <button class="card-btn2" onclick="redirectToDescription()">Опис</button>
+              <a href="description.html"><img src="../static/mavka.png" class="product-thumb" alt=""></a>
             </div>
         </div>
         <div class="product-card">
           <div class="product-image">
-              <img src="../static/65m.y.ago.png" class="product-thumb" alt="">
-              <button class="card-btn1">Замовити квиток</button>
-              <button class="card-btn2" onclick="redirectToDescription()">Опис</button>
+            <a href="description.html"><img src="../static/65m.y.ago.png" class="product-thumb" alt=""></a>
           </div>
         </div>
       </div>
     </section>
 
-    <script src="../static/js/script.js"></script>
+    <script src="{% static 'js/script.js' %}"></script>
 
 
     <div class="text">
@@ -185,13 +171,13 @@
         </p>
       </div>
       <div class="why-we-png">
-        <img id="image-1" src="../static/image-1.png" alt="image-1">
+        <img id="image-1" src="{% static 'image-1.png' %}" alt="image-1">
       </div>
     </div>
 
     <div class="why-we-container2">
       <div class="why-we-png">
-        <img id="image-2" src="../static/image-2.png" alt="image-2">
+        <img id="image-2" src="{% static 'image-2.png' %}" alt="image-2">
       </div>
       <div class="why-we-text">
         <p>Маємо найзручніші крісла з високоякісних матеріалів щоб перегляд фільмів здавався 10 хвилинною прогулянкою, 
@@ -206,13 +192,13 @@
         </p>
       </div>
       <div class="why-we-png">
-        <img id="image-3" src="../static/image-3.png" alt="image-3">
+        <img id="image-3" src="{% static 'image-3.png' %}" alt="image-3">
       </div>
     </div>
 
     <div class="why-we-container4">
       <div class="why-we-png">
-        <img id="image-4" src="../static/image-4.png" alt="image-4">
+        <img id="image-4" src="{% static 'image-4.png' %}" alt="image-4">
       </div>
       <div class="why-we-text">
         <p>Маємо найзручніші крісла з високоякісних матеріалів щоб перегляд фільмів здавався 10 хвилинною прогулянкою, 
