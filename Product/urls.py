@@ -16,7 +16,6 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from django.views.generic import TemplateView
 from django.conf import settings
 from django.conf.urls.static import static
 from cinema.views import MovieAPIView, ResevationAPIView, MovieDetailAPIView
@@ -24,12 +23,15 @@ from cinema.views import MovieAPIView, ResevationAPIView, MovieDetailAPIView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("", MovieAPIView.index),
-    path("reservation/", ResevationAPIView.index),
-    path("detail/", MovieDetailAPIView.index)
+    path("movie/<int:pk>/", MovieDetailAPIView.as_view()),
+    path("movie/<int:pk>/reservation/<int:session_id>", ResevationAPIView.as_view()),
+    # path("reservation/", ResevationAPIView.index
+    ]
+
 
 
     # path("api/v1/", MovieAPIView.as_view(), name="api_test") начало апишки
-]
+
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
