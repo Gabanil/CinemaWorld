@@ -24,12 +24,14 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("", MovieAPIView.index),
     path("movie/<int:pk>/", MovieDetailAPIView.as_view()),
-    path("reservation/", ResevationAPIView.index)
+    path("movie/<int:pk>/reservation/<int:session_id>", ResevationAPIView.as_view()),
+    # path("reservation/", ResevationAPIView.index
+    ]
 
 
 
     # path("api/v1/", MovieAPIView.as_view(), name="api_test") начало апишки
-]
+
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

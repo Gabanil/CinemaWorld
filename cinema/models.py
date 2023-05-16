@@ -145,20 +145,6 @@ class Hall(models.Model):
         verbose_name_plural = "Зали"
 
 
-class Reservation(models.Model):
-    client_name = models.CharField("Імʼя клієнта", max_length=100)
-    place_num = models.IntegerField("Місце")
-    paid = models.BooleanField("Оплачено")
-    date_resevation = models.DateTimeField("Дата та час")
-
-    def __str__(self):
-        return self.client_name, self.place_num
-
-    class Meta:
-        verbose_name = "Резервація"
-        verbose_name_plural = "Резервації"
-
-
 class Session(models.Model):
     hall_id = models.ForeignKey(Hall, verbose_name="Зал", on_delete=models.SET_NULL, null=True)
     movie_id = models.ForeignKey(Movie, verbose_name="Фільм", on_delete=models.SET_NULL, null=True)
@@ -178,3 +164,18 @@ class Session(models.Model):
 
     def __str__(self):
         return f"Сеанс {self.movie_id}, start at {self.start}, in {self.hall_id}"
+
+
+class Reservation(models.Model):
+    client_name = models.CharField("Імʼя клієнта", max_length=100)
+    place_num = models.IntegerField("Місце")
+    paid = models.BooleanField("Оплачено")
+    date_resevation = models.DateTimeField("Дата та час")
+    session_id = models.ForeignKey(Session, verbose_name="Сеанс", on_delete=models.DO_NOTHING, null=False)
+
+    def __str__(self):
+        return f"Місце {self.place_num}, Кліент {self.client_name}, сеанс: {self.session_id}"
+
+    class Meta:
+        verbose_name = "Резервація"
+        verbose_name_plural = "Резервації"
