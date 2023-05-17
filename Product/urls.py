@@ -18,14 +18,15 @@ from django.contrib import admin
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
-from cinema.views import MovieAPIView, ResevationAPIView, MovieDetailAPIView
+from cinema.views import MovieAPIView, ResevationAPIView, MovieDetailAPIView, SessionsView, MovieAvalableSession
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("", MovieAPIView.index),
     path("movie/<int:pk>/", MovieDetailAPIView.as_view()),
     path("movie/<int:pk>/reservation/<int:session_id>", ResevationAPIView.as_view()),
-    # path("reservation/", ResevationAPIView.index
+    path("reservation/", SessionsView.as_view()),
+    path("movie/<int:movie_id>/sessions", MovieAvalableSession.as_view())
     ]
 
 
