@@ -44,7 +44,7 @@ class SessionsView(APIView):
             'movies': unique_movies
         }
 
-        print(unique_movies)
+        # print(unique_movies)
         return render(request, "reservation.html")
 
 
@@ -52,6 +52,11 @@ class MovieAvalableSession(APIView):
     def get(self, request, movie_id):
         available_sessions = Session.objects.filter(movie_id=movie_id)
         return HttpResponse(available_sessions)
+
+
+class ReservationTemplate(APIView):
+    def get(self, request):
+        return render(request, "reservation.html")
 
 #    шаблон вьюшки
 # @swagger_auto_schema(
