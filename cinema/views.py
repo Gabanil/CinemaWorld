@@ -1,8 +1,10 @@
 from django.shortcuts import render
 from rest_framework.views import APIView
-from .models import Movie,Session , Reservation
+from .models import Movie, Session, Reservation
+from django.http import HttpResponse
 from rest_framework.response import Response
 from rest_framework import status
+
 # Create your views here.
 class MovieAPIView(APIView):
     def index(request):
@@ -30,8 +32,34 @@ class ResevationAPIView(APIView):
         }
         return render(request, "reservation.html", context)
 
- #    шаблон вьюшки
- # @swagger_auto_schema(
+
+class SessionsView(APIView):
+
+    def get(self, request):
+        sessions = Session.objects.all().order_by("movie_id")
+        unique_movies = sessions.values("movie_id").distinct()
+
+        context = {
+            'sessions': sessions,
+            'movies': unique_movies
+        }
+
+        # print(unique_movies)
+        return render(request, "reservation.html")
+
+
+class MovieAvalableSession(APIView):
+    def get(self, request, movie_id):
+        available_sessions = Session.objects.filter(movie_id=movie_id)
+        return HttpResponse(available_sessions)
+
+
+class ReservationTemplate(APIView):
+    def get(self, request):
+        return render(request, "reservation.html")
+
+#    шаблон вьюшки
+# @swagger_auto_schema(
     #     operation_summary="Get a dish by slug",
     #     operation_description="<b>Retrieve a single dish by its unique slug.</b>",
     #     responses={200: Dish_Serializer()},
