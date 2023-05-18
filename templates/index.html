@@ -102,7 +102,7 @@
           {% for movie in movies %}
           <div class="product-card">
               <div class="product-image">
-                  <a href="movie/{{ movie.pk }}"><img src="media/{{ movie.poster }}" class="product-thumb" alt=""></a>
+                  <a href="movie/{{ movie.pk }}"><img src="{{ movie.poster.url }}" class="product-thumb" alt=""></a>
                   <!-- <button class="card-btn1">Придбати квиток</button>
                   <button class="card-btn2" onclick="redirectToDescription()">Опис</button> -->
               </div>

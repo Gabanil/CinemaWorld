@@ -23,7 +23,7 @@
     <nav class="nav">
         <ul>
             <li>
-                <img id="logo-img" src="../static/logo/CinemaWorldLogo.png" alt="Logo"/>
+                <img id="logo-img" src="{% static 'logo/CinemaWorldLogo.png' %}" alt="Logo"/>
             </li>
             <li>
                 <a href="#">Кінотеатри</a>
@@ -49,7 +49,7 @@
 
     <div class="template">
         <div class="template-left-part">
-            <img id="mavka-img" src="../../media/{{ movie.poster }}" alt="mavka">
+            <img id="mavka-img" src="{{ movie.poster.url }}" alt="mavka">
             <h2>{{ movie.title }}</h2>
         </div>
         <div class="template-right-part">

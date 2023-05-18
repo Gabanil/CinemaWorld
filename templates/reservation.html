@@ -17,7 +17,7 @@
     <nav class="nav">
       <ul>
         <li>
-            <img id="logo-img" src="../static/logo/CinemaWorldLogo.png" alt="Logo" />
+            <img id="logo-img" src="{% static 'logo/CinemaWorldLogo.png' %}" alt="Logo" />
         </li>
         <li>
           <a href="#">Кінотеатри</a>
@@ -42,8 +42,8 @@
 
     <div class="main-reserv-div">
         <div class="reserv-left-part">
-            <img id="mavka-img" src="../static/mavka.png" alt="mavka">
-            <h2>Мавка: Лісова пісня</h2>
+            <img id="mavka-img" src="{{ movie.poster.url }}" alt="mavka">
+            <h2>{{ movie.title }}</h2>
         </div>
         <div class="reserv-right-part">
             <div class="reserv-div">    

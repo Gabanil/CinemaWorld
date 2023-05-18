@@ -17,7 +17,7 @@
     <nav class="nav">
         <ul>
             <li>
-                <img id="logo-img" src="../static/logo/CinemaWorldLogo.png" alt="Logo"/>
+                <img id="logo-img" src="{% static 'logo/CinemaWorldLogo.png' %}" alt="Logo"/>
             </li>
             <li>
                 <a href="#">Кінотеатри</a>
@@ -43,7 +43,7 @@
 
     <div class="template">
         <div class="template-left-part">
-            <img id="mavka-img" src="../../../media/{{ movie.poster }}" alt="mavka">
+            <img id="mavka-img" src="{{ movie.poster.url }}" alt="mavka">
             <h2>{{ movie.title }}</h2>
         </div>
         <div class="template-right-part">
@@ -51,7 +51,7 @@
                 <label for="time">Choose a time:</label>
                 <select id="time" name="time">
                     {% for session in sessions %}
-                    <option value="09:00">{{ session.start }}</option>
+                    <option value="{{ session.pk }}/reservation/">{{ session.start }}</option>
                     {% endfor %}
                     <!-- Add more options as needed -->
                 </select>
@@ -80,6 +80,17 @@
             </div>
         </div>
     </footer>
+
+    <script>
+    document.querySelector('form').addEventListener('submit', function(e) {
+      e.preventDefault(); // Prevent the form from submitting normally
+
+      var selectedOption = document.getElementById('time').value;
+      if (selectedOption !== '') {
+        window.open(selectedOption, '_blank'); // Open the selected URL in a new tab
+      }
+    });
+  </script>
     </body>
 {% endblock content %}
 </html>
