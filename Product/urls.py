@@ -27,7 +27,7 @@ urlpatterns = [
     path("movie/<int:pk>/", MovieDetailAPIView.as_view()),
     path("movie/<int:pk>/reservation/<int:session_id>", ResevationAPIView.as_view()),
     path("session/", SessionsViewList.as_view()),
-    path("movie/<int:pk>/sessions/",SessionFilmView.as_view()),
+    path("movie/<int:pk>/sessions/", SessionFilmView.as_view()),
     path("movie/<int:movie_id>/sessions", MovieAvalableSession.as_view())
     ]
 
