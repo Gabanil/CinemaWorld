@@ -8,12 +8,6 @@
         <link rel="stylesheet" type="text/css" href="{% static 'css/description-styles.css' %}"/>
         <link rel="icon" href=""/>
         <title>Cinema World</title>
-
-        <script>
-            function openNewPage() {
-                window.open("/movie/{{ movie.pk }}/sessions/"); // Замените URL-адресом нужной вам страницы
-            }
-        </script>
     </head>
 {% endblock head %}
 
@@ -53,12 +47,23 @@
             <h2>{{ movie.title }}</h2>
         </div>
         <div class="template-right-part">
-            <p>{{ movie.description }}</p>
-            <p>Режисер: </p>
-            <p>Актори: </p>
-            <p>Тривалість: {{ movie.duration }} хв.</p>
-            <button onclick="openNewPage()">Придбати квиток</button>
+            <form>
+                <label for="time">Choose a time:</label>
+                <select id="time" name="time">
+                    <option value="09:00">09:00 AM</option>
+                    <option value="10:00">10:00 AM</option>
+                    <option value="11:00">11:00 AM</option>
+                    <option value="12:00">12:00 PM</option>
+                    <!-- Add more options as needed -->
+                </select>
+
+                <br>
+
+                <input type="submit" value="Book Session">
+            </form>
         </div>
+
+
     </div>
 
 

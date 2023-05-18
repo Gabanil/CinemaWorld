@@ -33,7 +33,7 @@ class ResevationAPIView(APIView):
         return render(request, "reservation.html", context)
 
 
-class SessionsView(APIView):
+class SessionsViewList(APIView):
 
     def get(self, request):
         sessions = Session.objects.all().order_by("movie_id")
@@ -46,6 +46,19 @@ class SessionsView(APIView):
 
         # print(unique_movies)
         return render(request, "reservation.html")
+
+
+class SessionFilmView(APIView):
+    def get(self, request, pk):
+        sessions = Session.objects.filter(movie_id=pk)
+        movie = Movie.objects.get(pk=pk)
+
+        context = {
+            'movie': movie,
+            'sessions': sessions
+        }
+        return render(request, "sessions.html", context)
+
 
 
 class MovieAvalableSession(APIView):
