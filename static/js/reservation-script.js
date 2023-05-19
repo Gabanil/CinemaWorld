@@ -4,6 +4,7 @@ const total = document.getElementById('total');
 
 //скрипт для резервації
 populateUI();
+loadOccupiedSeats();
 let ticketPrice = 110;
 
 // Seat click event
@@ -35,6 +36,19 @@ function populateUI() {
     });
   }
 }
+function loadOccupiedSeats()
+{
+    let occupiedSeats = [2,5,8,3,9];
+    let allSeats = document.querySelectorAll('.row .seat');
 
+    for(let i = 0, len = allSeats.length; i < len; i++)
+    {
+        allSeats[i].className = "seat";
+    }
+    for(let i = 0, len = occupiedSeats.length; i < len; i++)
+    {
+        allSeats[occupiedSeats[i]].className = "seat occupied";
+    }
+}
 // intial count and total
 updateSelectedCount();
