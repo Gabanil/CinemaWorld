@@ -1,9 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from rest_framework.views import APIView
 from .models import Movie, Session, Reservation
 from django.http import HttpResponse
 from rest_framework.response import Response
 from rest_framework import status
+from .forms import ReservationForm
 
 
 class MovieAPIView(APIView):
@@ -40,6 +41,9 @@ class ResevationAPIView(APIView):
             return Response({'error': 'Movie not found'}, status=status.HTTP_404_NOT_FOUND)
         except Session.DoesNotExist:
             return Response({'error': 'Session not found'}, status=status.HTTP_404_NOT_FOUND)
+
+    def post(self, request, *args, **kwargs):
+        movie = self.kwargs["movie_id"]
 
 
 class SessionsViewList(APIView):
@@ -83,6 +87,24 @@ class MovieAvalableSession(APIView):
 class ReservationTemplate(APIView):
     def get(self, request):
         return render(request, "reservation.html")
+
+
+def reservation_create(request):
+    if request.method == 'POST':
+        form = ReservationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('reservation_success')
+    else:
+        form = ReservationForm()
+
+    return render(request, {'form': form})
+    # return render(request, 'reservation_create.html', {'form': form})
+
+
+def reservation_success(request):
+    return HttpResponse("Success!")
+    # return render(request, 'appointment_success.html')
 
 
 #    шаблон вьюшки
