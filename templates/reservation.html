@@ -17,7 +17,7 @@
     <nav class="nav">
       <ul>
         <li>
-            <img id="logo-img" src="../static/logo/CinemaWorldLogo.png" alt="Logo" />
+            <img id="logo-img" src="{% static 'logo/CinemaWorldLogo.png' %}" alt="Logo" />
         </li>
         <li>
           <a href="#">Кінотеатри</a>
@@ -42,9 +42,48 @@
 
     <div class="main-reserv-div">
         <div class="reserv-left-part">
-            <img id="mavka-img" src="../static/mavka.png" alt="mavka">
-            <h2>Мавка: Лісова пісня</h2>
+            <img src="{{ movie.poster.url }}" alt="movie">
+            <h2>{{ movie.title }}</h2>
         </div>
+        <div class="reserv-middle-part">
+            <!-- <form>
+                <label for="time">Choose a time:</label>
+                <select id="time" name="time">
+                    {% for session in sessions %}
+                    <option value="{{ session.pk }}/reservation/">{{ session.start }}</option>
+                    {% endfor %}
+                </select>
+
+                <br>
+
+                <input type="submit" value="Book Session">
+            </form> -->
+            <div class="buttons">
+              <button class="round-button">12 Травня, 7:30</button>
+              <button class="round-button">12 Травня, 7:30</button>
+              <button class="round-button">12 Травня, 7:30</button>
+              <button class="round-button">12 Травня, 7:30</button>              
+            </div>
+        </div>
+
+        <script>
+          var buttons = document.getElementsByClassName("round-button");
+          for (var i = 0; i < buttons.length; i++) {
+            buttons[i].addEventListener("click", function() {
+              var currentButton = this;
+              
+              var prevButton = document.querySelector(".round-button.clicked");
+              if (prevButton && prevButton !== currentButton) {
+                prevButton.classList.remove("clicked");
+                prevButton.disabled = false;
+              }
+              
+              currentButton.classList.add("clicked");
+              currentButton.disabled = true;
+            });
+          }
+        </script>
+
         <div class="reserv-right-part">
             <div class="reserv-div">    
                   <ul class="showcase">
@@ -141,7 +180,7 @@
             </div>
         </div>  
     </div>
-
+    
     <script src="{% static "js/reservation-script.js/" %}"></script>
 
 

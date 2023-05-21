@@ -89,6 +89,7 @@
   /* reservation */
   .main-reserv-div {
     padding-top: 50px;
+    padding-bottom: 50px;
     display: flex;
     margin: auto;
     font-family: Arial, Helvetica, sans-serif;
@@ -101,9 +102,50 @@
     width: 400px;
     height: 500px;
   }
-  .reserv-right-part {
-    margin-left: 50px;
+  .reserv-middle-part {
+    overflow: auto;
+    max-height: 500px;
+    margin: 0 50px;
+    width: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
+  .reserv-middle-part .round-button {
+    display: inline-block;
+    border-radius: 50px;
+    margin: 10px 0; 
+    padding: 10px 20px; 
+    min-width: 350px;
+    background-color: #c4c4c4;
+    border: none; 
+    color: #333; 
+    font-size: 21px; 
+    text-align: center; 
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+  .reserv-middle-part button:hover {
+    opacity: 0.7;
+    cursor: pointer;
+  }
+  .round-button.clicked {
+    background-color: #5f9e62;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  .reserv-middle-part::-webkit-scrollbar {
+    width: 8px;
+  }  
+  .reserv-middle-part::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+  }  
+  .reserv-middle-part::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 20px;
+  }
+
   .reserv-div {
     margin: 0 auto;
   }
