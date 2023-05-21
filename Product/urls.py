@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
-from cinema.views import MovieAPIView, ResevationAPIView, MovieDetailAPIView, SessionsViewList, MovieAvalableSession, ReservationTemplate
+from cinema.views import MovieAPIView, ResevationAPIView, MovieDetailAPIView, SessionsViewList, MovieAvalableSession, ReservationTemplate, reservation_create, reservation_success
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -28,6 +28,9 @@ urlpatterns = [
     path("session/", SessionsViewList.as_view()),
     path("movie/<int:pk>/sessions/", MovieAvalableSession.as_view()),
     path("movie/<int:pk>/sessions/<int:session_id>/reservation/", ResevationAPIView.as_view()),
+    path('reservation/create/', reservation_create, name='reservation_create'),
+    path('reservation/success/', reservation_success, name='reservation_success'),
+
     ]
 
     # path("api/v1/", MovieAPIView.as_view(), name="api_test") начало апишки
