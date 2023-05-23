@@ -108,29 +108,30 @@
     margin: 0 50px;
     width: 400px;
     display: flex;
-    justify-content: center;
-    align-items: center;
   }
   .reserv-middle-part .round-button {
     display: inline-block;
     border-radius: 50px;
     margin: 10px 0; 
-    padding: 10px 20px; 
-    min-width: 350px;
-    background-color: #c4c4c4;
-    border: none; 
+    padding: 10px 20px;
+    background-color: white; 
+    min-width: 380px;
+    border: 2px solid;
     color: #333; 
     font-size: 21px; 
     text-align: center; 
     text-decoration: none;
     transition: all 0.3s ease;
   }
+  .buttons {
+
+  }
   .reserv-middle-part button:hover {
     opacity: 0.7;
     cursor: pointer;
   }
   .round-button.clicked {
-    background-color: #5f9e62;
+    background-color: #141414;
     color: white;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -170,8 +171,8 @@
     margin-bottom: 30px;
   }
   
-  .seat {
-    background-color: #c4c4c4;
+  .seat {    
+    background-color: #5f9e62;
     height: 18px;
     width: 20px;
     margin: 3px;
@@ -180,7 +181,7 @@
   }
   
   .seat.selected {
-    background-color: #5f9e62;
+    background-color: #c4c4c4;
   }
   
   .seat.occupied {
@@ -233,7 +234,8 @@
   }
   
   .screen {
-    background-color: #8a8a8a;
+    background-color: white;
+    border: 1px solid black;
     height: 70px;
     width: 100%;
     margin: 15px 0;
@@ -261,7 +263,7 @@
     margin-top: 20px;
     padding: 20px 30px;
     border-radius: 30px;
-    background-color: none;
+    background-color: white;
     color: black;
     text-decoration: none;
     font-family: Arial, Helvetica, sans-serif;
