@@ -23,17 +23,26 @@ class MovieDetailAPIView(APIView):
         except Movie.DoesNotExist:
             return Response({'error': 'Movie not found'}, status=status.HTTP_404_NOT_FOUND)
 
+
 class ResevationAPIView(APIView):
     def get(self, request, pk, session_id):
         try:
             movie = Movie.objects.get(pk=pk)
             session = Session.objects.get(movie_id=pk, pk=session_id)
-            print(session)
+            # print(session)
             reservations = Reservation.objects.filter(session_id=session_id)
-            print(reservations)
+            places_num = list(reservations.values("place_num"))  # get only place numbers
+            place_nums = [item['place_num'] for item in places_num]  # places queryset into list
+
+            reg_form = ReservationForm()
+
             context = {
                 'movie': movie,
-                'places_res': reservations
+                "reservations": reservations,
+                'places_res': place_nums,
+                'form': reg_form,
+                'session_id': session.pk
+
             }
             return render(request, "reservation.html", context)
 
@@ -42,8 +51,18 @@ class ResevationAPIView(APIView):
         except Session.DoesNotExist:
             return Response({'error': 'Session not found'}, status=status.HTTP_404_NOT_FOUND)
 
-    def post(self, request, *args, **kwargs):
-        movie = self.kwargs["movie_id"]
+    def post(self, request, session_id, *args, **kwargs):
+
+        form = ReservationForm(request.POST)
+        if form.is_valid():
+            session = Session.objects.get(pk=session_id)
+            print(session)
+            # form.cleaned_data['session_id'] = session
+            # print(form.session_id)
+            form.save()
+            return Response({'success': 'Reservation created'}, status=status.HTTP_201_CREATED)
+        else:
+            return Response({'error': 'Form Not Correct'}, status=status.HTTP_400_BAD_REQUEST)
 
 
 class SessionsViewList(APIView):
@@ -89,35 +108,18 @@ class ReservationTemplate(APIView):
         return render(request, "reservation.html")
 
 
-def reservation_create(request):
-    if request.method == 'POST':
-        form = ReservationForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('reservation_success')
-    else:
-        form = ReservationForm()
-
-    return render(request, {'form': form})
-    # return render(request, 'reservation_create.html', {'form': form})
-
-
-def reservation_success(request):
-    return HttpResponse("Success!")
-    # return render(request, 'appointment_success.html')
-
 
 #    шаблон вьюшки
 # @swagger_auto_schema(
-    #     operation_summary="Get a dish by slug",
-    #     operation_description="<b>Retrieve a single dish by its unique slug.</b>",
-    #     responses={200: Dish_Serializer()},
-    #     tags=["Pages"])
-    # def get(self, request, slug):
-    #     try:
-    #         movies = Movie.objects.all()
-    #         # serializer = Dish_Serializer(dish, context={'request': request})
-    #         print(movies)
-    #         return Response(movies)
-    #     except Movie.DoesNotExist:
-    #         return Response({'error': 'Movie not found'}, status=status.HTTP_404_NOT_FOUND)
+#     operation_summary="Get a dish by slug",
+#     operation_description="<b>Retrieve a single dish by its unique slug.</b>",
+#     responses={200: Dish_Serializer()},
+#     tags=["Pages"])
+# def get(self, request, slug):
+#     try:
+#         movies = Movie.objects.all()
+#         # serializer = Dish_Serializer(dish, context={'request': request})
+#         print(movies)
+#         return Response(movies)
+#     except Movie.DoesNotExist:
+#         return Response({'error': 'Movie not found'}, status=status.HTTP_404_NOT_FOUND)

@@ -4,40 +4,40 @@
 <html>
 {% block head %}
     <head>
-        <meta charset="UTF-8" />
+        <meta charset="UTF-8"/>
         <link rel="stylesheet" type="text/css" href="{% static 'css/reservation-styles.css' %}"/>
-        <link rel="icon" href="" /> 
+        <link rel="icon" href=""/>
         <title>Cinema World</title>
     </head>
 {% endblock head %}
 
 
 {% block content %}
-<body>
+    <body>
     <nav class="nav">
-      <ul>
-        <li>
-            <img id="logo-img" src="{% static 'logo/CinemaWorldLogo.png' %}" alt="Logo" />
-        </li>
-        <li>
-          <a href="#">Кінотеатри</a>
-        </li>
-        <li>
-          <a href="#">Сеанси</a>
-        </li>
-        <li>
-          <a href="#">Локації</a>
-        </li>
-        <li>
-            <a href="#">Про нас</a>
-        </li>
-        <li>
-            <a href="#">Контакти</a>
-        </li>
-        <div class="log-in">
-          <a href="#">Увійти</a>
-        </div>
-      </ul>
+        <ul>
+            <li>
+                <img id="logo-img" src="{% static 'logo/CinemaWorldLogo.png' %}" alt="Logo"/>
+            </li>
+            <li>
+                <a href="#">Кінотеатри</a>
+            </li>
+            <li>
+                <a href="#">Сеанси</a>
+            </li>
+            <li>
+                <a href="#">Локації</a>
+            </li>
+            <li>
+                <a href="#">Про нас</a>
+            </li>
+            <li>
+                <a href="#">Контакти</a>
+            </li>
+            <div class="log-in">
+                <a href="#">Увійти</a>
+            </div>
+        </ul>
     </nav>
 
     <div class="main-reserv-div">
@@ -59,145 +59,180 @@
                 <input type="submit" value="Book Session">
             </form> -->
             <div class="buttons">
-              <button class="round-button">12 Травня, 7:30</button>
-              <button class="round-button">12 Травня, 7:30</button>
-              <button class="round-button">12 Травня, 7:30</button>
-              <button class="round-button">12 Травня, 7:30</button>              
+                <button class="round-button">12 Травня, 7:30</button>
+                <button class="round-button">12 Травня, 7:30</button>
+                <button class="round-button">12 Травня, 7:30</button>
+                <button class="round-button">12 Травня, 7:30</button>
             </div>
         </div>
 
         <script>
-          var buttons = document.getElementsByClassName("round-button");
-          for (var i = 0; i < buttons.length; i++) {
-            buttons[i].addEventListener("click", function() {
-              var currentButton = this;
-              
-              var prevButton = document.querySelector(".round-button.clicked");
-              if (prevButton && prevButton !== currentButton) {
-                prevButton.classList.remove("clicked");
-                prevButton.disabled = false;
-              }
-              
-              currentButton.classList.add("clicked");
-              currentButton.disabled = true;
-            });
-          }
+            var buttons = document.getElementsByClassName("round-button");
+            for (var i = 0; i < buttons.length; i++) {
+                buttons[i].addEventListener("click", function () {
+                    var currentButton = this;
+
+                    var prevButton = document.querySelector(".round-button.clicked");
+                    if (prevButton && prevButton !== currentButton) {
+                        prevButton.classList.remove("clicked");
+                        prevButton.disabled = false;
+                    }
+
+                    currentButton.classList.add("clicked");
+                    currentButton.disabled = true;
+                });
+            }
         </script>
 
         <div class="reserv-right-part">
-            <div class="reserv-div">    
-                  <ul class="showcase">
+            <div class="reserv-div">
+                <ul class="showcase">
                     <li>
-                      <div class="seat"></div>
-                      <small>Вільно</small>
+                        <div class="seat"></div>
+                        <small>Вільно</small>
                     </li>
-              
+
                     <li>
-                      <div class="seat selected"></div>
-                      <small>Обрано</small>
+                        <div class="seat selected"></div>
+                        <small>Обрано</small>
                     </li>
-              
+
                     <li>
-                      <div class="seat occupied"></div>
-                      <small>Зайнято</small>
+                        <div class="seat occupied"></div>
+                        <small>Зайнято</small>
                     </li>
-                  </ul>
-              
-                  <div class="container">
+                </ul>
+
+                <div class="container">
                     <div class="screen"></div>
                     <div class="row">
-                      <div class="seat"></div>
-                      <div class="seat"></div>
-                      <div class="seat"></div>
-                      <div class="seat"></div>
-                      <div class="seat"></div>
-                      <div class="seat"></div>
-                      <div class="seat"></div>
-                      <div class="seat"></div>
+                        <div class="seat"></div>
+                        <div class="seat"></div>
+                        <div class="seat"></div>
+                        <div class="seat"></div>
+                        <div class="seat"></div>
+                        <div class="seat"></div>
+                        <div class="seat"></div>
+                        <div class="seat"></div>
                     </div>
                     <div class="row">
-                      <div class="seat"></div>
-                      <div class="seat"></div>
-                      <div class="seat"></div>
-                      <div class="seat occupied"></div>
-                      <div class="seat occupied"></div>
-                      <div class="seat"></div>
-                      <div class="seat"></div>
-                      <div class="seat"></div>
+                        <div class="seat occupied"></div>
+                        <div class="seat occupied"></div>
+                        <div class="seat occupied"></div>
+                        <div class="seat occupied"></div>
+                        <div class="seat occupied"></div>
+                        <div class="seat occupied"></div>
+                        <div class="seat occupied"></div>
+                        <div class="seat occupied"></div>
                     </div>
-              
+
                     <div class="row">
-                      <div class="seat"></div>
-                      <div class="seat"></div>
-                      <div class="seat"></div>
-                      <div class="seat"></div>
-                      <div class="seat"></div>
-                      <div class="seat"></div>
-                      <div class="seat occupied"></div>
-                      <div class="seat occupied"></div>
+                        <div class="seat occupied"></div>
+                        <div class="seat occupied"></div>
+                        <div class="seat occupied"></div>
+                        <div class="seat occupied"></div>
+                        <div class="seat occupied"></div>
+                        <div class="seat occupied"></div>
+                        <div class="seat occupied"></div>
+                        <div class="seat occupied"></div>
                     </div>
-              
+
                     <div class="row">
-                      <div class="seat"></div>
-                      <div class="seat"></div>
-                      <div class="seat"></div>
-                      <div class="seat"></div>
-                      <div class="seat"></div>
-                      <div class="seat"></div>
-                      <div class="seat"></div>
-                      <div class="seat"></div>
+                        <div class="seat occupied"></div>
+                        <div class="seat occupied"></div>
+                        <div class="seat occupied"></div>
+                        <div class="seat occupied"></div>
+                        <div class="seat occupied"></div>
+                        <div class="seat occupied"></div>
+                        <div class="seat occupied"></div>
+                        <div class="seat occupied"></div>
                     </div>
-              
+
                     <div class="row">
-                      <div class="seat"></div>
-                      <div class="seat"></div>
-                      <div class="seat"></div>
-                      <div class="seat occupied"></div>
-                      <div class="seat occupied"></div>
-                      <div class="seat"></div>
-                      <div class="seat"></div>
-                      <div class="seat"></div>
+                        <div class="seat occupied"></div>
+                        <div class="seat occupied"></div>
+                        <div class="seat occupied"></div>
+                        <div class="seat occupied"></div>
+                        <div class="seat occupied"></div>
+                        <div class="seat occupied"></div>
+                        <div class="seat occupied"></div>
+                        <div class="seat occupied"></div>
                     </div>
-              
+
                     <div class="row">
-                      <div class="seat"></div>
-                      <div class="seat"></div>
-                      <div class="seat"></div>
-                      <div class="seat"></div>
-                      <div class="seat occupied"></div>
-                      <div class="seat occupied"></div>
-                      <div class="seat occupied"></div>
-                      <div class="seat"></div>
+                        <div class="seat occupied"></div>
+                        <div class="seat occupied"></div>
+                        <div class="seat occupied"></div>
+                        <div class="seat occupied"></div>
+                        <div class="seat occupied"></div>
+                        <div class="seat occupied"></div>
+                        <div class="seat occupied"></div>
+                        <div class="seat occupied"></div>
                     </div>
-                  </div>
-              
-                  <p class="text">
+                </div>
+
+                <p class="text">
                     Ціна квитка <span id="total">0</span> гривень
-                  </p>
+                </p>
             </div>
             <div class="buyBtn">
-              <button>Придбати квиток</button>
+                <button id="openFormBtn" class="btn btn-primary">Придбати квиток</button>
             </div>
-        </div>  
+        </div>
     </div>
-    
+    <script>
+        var reservations = {{ places_res|safe }};
+    </script>
     <script src="{% static "js/reservation-script.js/" %}"></script>
 
+    <div id="formBackdrop" class="backdrop">
+        <form method="post">
+            {% csrf_token %}
 
+            <label class="form-label">{{ form.client_name.label }}:</label>
+            <input type="text" name="client_name" >
+
+            <label class="form-label">{{ form.client_email.label }}:</label>
+            <input type="email" name="client_email" >
+
+            <label class="form-label">{{ form.client_phone.label }}:</label>
+            <input type="tel" name="client_phone" >
+
+            <label class="form-label">{{ form.place_num.label }}:</label>
+            <input type="number" name="place_num" >
+            <input style="display: none" type="number" id="id_session_id" name="session_id" value="{{ session_id }}">
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Hide the form backdrop initially
+            $("#formBackdrop").hide();
+
+            // Handle button click event
+            $("#openFormBtn").click(function () {
+                // Show or hide the form backdrop based on its current visibility
+                $("#formBackdrop").toggle();
+            });
+        });
+    </script>
     <footer>
-      <div class="footer-container">
-        <div class="left-part">          
-          <a href="#">Сеанси</a>
-          <a href="#">Про нас</a>
-          <a href="#">Контакти</a>
+        <div class="footer-container">
+            <div class="left-part">
+                <a href="#">Сеанси</a>
+                <a href="#">Про нас</a>
+                <a href="#">Контакти</a>
+            </div>
+            <div class="right-part">
+                <h5>Зателефонуйте нам</h5>
+                <h5>+380 66 666 66 66</h5>
+                <h5>Copyright 2023</h5>
+            </div>
         </div>
-        <div class="right-part">
-          <h5>Зателефонуйте нам</h5>
-          <h5>+380 66 666 66 66</h5>
-          <h5>Copyright 2023</h5>
-        </div>
-      </div>
     </footer>
-  </body>
+    </body>
 {% endblock content %}
 </html>

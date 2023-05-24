@@ -1,8 +1,9 @@
 from django.db import models
 from datetime import date
 from datetime import timedelta
-
+from django.utils import timezone
 from django.urls import reverse
+from django.core.validators import RegexValidator
 
 
 class Category(models.Model):
@@ -150,7 +151,6 @@ class Session(models.Model):
     movie_id = models.ForeignKey(Movie, verbose_name="Фільм", on_delete=models.SET_NULL, null=True)
     start = models.DateTimeField("Початок")
     end = models.DateTimeField("Кінець", blank=True, null=True)
-    # default = start + timedelta(minutes=movie_id.duration)
 
     class Meta:
         verbose_name = "Сеанс"
@@ -168,10 +168,18 @@ class Session(models.Model):
 
 class Reservation(models.Model):
     client_name = models.CharField("Імʼя клієнта", max_length=100)
-    place_num = models.IntegerField("Місце")
-    paid = models.BooleanField("Оплачено")
-    date_resevation = models.DateTimeField("Дата та час")
-    session_id = models.ForeignKey(Session, verbose_name="Сеанс", on_delete=models.DO_NOTHING, null=False)
+    client_email = models.EmailField(blank=False)
+
+    phone_regex = RegexValidator(
+        regex=r'^\+?1?\d{9,15}$',
+        message="Phone number must be entered in the format: '+999999999999'. Up to 15 digits allowed."
+    )
+    client_phone = models.CharField(max_length=15, validators=[phone_regex], blank=True)
+
+    place_num = models.IntegerField("Місце", blank=False)
+    paid = models.BooleanField("Оплачено", default=False, blank=True)
+    date_resevation = models.DateTimeField("Дата та час", default=timezone.now, blank=True)
+    session_id = models.ForeignKey(Session, verbose_name="Сеанс", on_delete=models.DO_NOTHING, null=True, blank=False)
 
     def __str__(self):
         return f"Місце {self.place_num}, Кліент {self.client_name}, сеанс: {self.session_id}"
