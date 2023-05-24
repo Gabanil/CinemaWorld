@@ -39,16 +39,15 @@ function populateUI() {
 
 function loadOccupiedSeats() {
 
-
     let occupiedSeats = reservations;
-    
+
     let allSeats = document.querySelectorAll('.row .seat');
 
     for (let i = 0, len = allSeats.length; i < len; i++) {
         allSeats[i].className = "seat";
     }
     for (let i = 0, len = occupiedSeats.length; i < len; i++) {
-        allSeats[occupiedSeats[i]].className = "seat occupied";
+        allSeats[occupiedSeats[i]-1].className = "seat occupied";
     }
 }
 
