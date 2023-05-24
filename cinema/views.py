@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from rest_framework.views import APIView
 from .models import Movie, Session, Reservation
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from rest_framework.response import Response
 from rest_framework import status
 from .forms import ReservationForm
@@ -105,12 +105,22 @@ class MovieAvalableSession(APIView):
             return Response({'error': 'Sessions not found'}, status=status.HTTP_404_NOT_FOUND)
 
 
-class ReservationTemplate(APIView):
-    def get(self, request):
-        return render(request, "reservation.html")
+import json
+
+import json
 
 
+def get_reservations(request):
 
+    session_id = request.GET.get('session_id')
+    reservations = Reservation.objects.filter(session_id=session_id)
+    places_num = list(reservations.values("place_num"))  # get only place numbers
+    place_nums = [item['place_num'] for item in places_num]  # places queryset into list
+
+    data = {
+        'place_nums': place_nums,
+    }
+    return JsonResponse(data)
 #    шаблон вьюшки
 # @swagger_auto_schema(
 #     operation_summary="Get a dish by slug",
