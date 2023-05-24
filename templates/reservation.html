@@ -4,40 +4,40 @@
 <html>
 {% block head %}
     <head>
-        <meta charset="UTF-8" />
+        <meta charset="UTF-8"/>
         <link rel="stylesheet" type="text/css" href="{% static 'css/reservation-styles.css' %}"/>
-        <link rel="icon" href="" /> 
+        <link rel="icon" href=""/>
         <title>Cinema World</title>
     </head>
 {% endblock head %}
 
 
 {% block content %}
-<body>
+    <body>
     <nav class="nav">
-      <ul>
-        <li>
-            <img id="logo-img" src="{% static 'logo/CinemaWorldLogo.png' %}" alt="Logo" />
-        </li>
-        <li>
-          <a href="#">Кінотеатри</a>
-        </li>
-        <li>
-          <a href="#">Сеанси</a>
-        </li>
-        <li>
-          <a href="#">Локації</a>
-        </li>
-        <li>
-            <a href="#">Про нас</a>
-        </li>
-        <li>
-            <a href="#">Контакти</a>
-        </li>
-        <div class="log-in">
-          <a href="#">Увійти</a>
-        </div>
-      </ul>
+        <ul>
+            <li>
+                <img id="logo-img" src="{% static 'logo/CinemaWorldLogo.png' %}" alt="Logo"/>
+            </li>
+            <li>
+                <a href="#">Кінотеатри</a>
+            </li>
+            <li>
+                <a href="#">Сеанси</a>
+            </li>
+            <li>
+                <a href="#">Локації</a>
+            </li>
+            <li>
+                <a href="#">Про нас</a>
+            </li>
+            <li>
+                <a href="#">Контакти</a>
+            </li>
+            <div class="log-in">
+                <a href="#">Увійти</a>
+            </div>
+        </ul>
     </nav>
 
     <div class="main-reserv-div">
@@ -59,17 +59,9 @@
                 <input type="submit" value="Book Session">
             </form> -->
             <div class="buttons">
-              <button class="round-button">12 Травня, 7:30</button>
-              <button class="round-button">12 Травня, 7:30</button>
-              <button class="round-button">12 Травня, 7:30</button>
-              <button class="round-button">12 Травня, 7:30</button>
-              <button class="round-button">12 Травня, 7:30</button>
-              <button class="round-button">12 Травня, 7:30</button>
-              <button class="round-button">12 Травня, 7:30</button>
-              <button class="round-button">12 Травня, 7:30</button>
-              <button class="round-button">12 Травня, 7:30</button>
-              <button class="round-button">12 Травня, 7:30</button>
-              <button class="round-button">12 Травня, 7:30</button>
+                {% for session in sessions %}
+                    <button class="round-button">{{ session.start.time }}, {{ session.start.date }}</button>
+                {% endfor %}
             </div>
         </div>
 
@@ -197,16 +189,16 @@
             {% csrf_token %}
 
             <label class="form-label">{{ form.client_name.label }}:</label>
-            <input type="text" name="client_name" >
+            <input type="text" name="client_name">
 
             <label class="form-label">{{ form.client_email.label }}:</label>
-            <input type="email" name="client_email" >
+            <input type="email" name="client_email">
 
             <label class="form-label">{{ form.client_phone.label }}:</label>
-            <input type="tel" name="client_phone" >
+            <input type="tel" name="client_phone">
 
             <label class="form-label">{{ form.place_num.label }}:</label>
-            <input type="number" name="place_num" >
+            <input type="number" name="place_num">
             <input style="display: none" type="number" id="id_session_id" name="session_id" value="{{ session_id }}">
 
             <button type="submit">Submit</button>

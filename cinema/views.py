@@ -28,6 +28,7 @@ class ResevationAPIView(APIView):
     def get(self, request, pk, session_id):
         try:
             movie = Movie.objects.get(pk=pk)
+            sessions = Session.objects.filter(movie_id=pk)
             session = Session.objects.get(movie_id=pk, pk=session_id)
             # print(session)
             reservations = Reservation.objects.filter(session_id=session_id)
@@ -41,7 +42,8 @@ class ResevationAPIView(APIView):
                 "reservations": reservations,
                 'places_res': place_nums,
                 'form': reg_form,
-                'session_id': session.pk
+                'session_id': session.pk,
+                'sessions': sessions
 
             }
             return render(request, "reservation.html", context)
