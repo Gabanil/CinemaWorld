@@ -8,6 +8,7 @@ const btnBuyTicket = document.getElementById('openFormBtn');
 populateUI();
 // loadOccupiedSeats();
 let ticketPrice = 110;
+let numbersOfSelectedSeats = [];
 
 // Seat click event
 container.addEventListener('click', (e) => {
@@ -39,6 +40,50 @@ function populateUI() {
     }
 }
 
+function takeActualReservations(session_id) {
+    $.ajax({
+        url: '../../../../../reservation/',
+        method: 'GET',
+        data: {session_id: (session_id)},  // Provide the session ID
+        success: function (response) {
+            // Handle the successful response
+            var placeNums = response.place_nums;
+            console.log(placeNums);
+        },
+        error: function (xhr, status, error) {
+            // Handle the error response
+            console.log('Error:', error);
+        }
+    });
+}
+
+function takeReservationsReload(session_id) {
+    $.ajax({
+        url: '../../../../../reservation/',
+        method: 'GET',
+        data: {session_id: (session_id)},  // Provide the session ID
+        success: function (response) {
+            // Handle the successful response
+            var placeNums = response.place_nums;
+            var combined_string = placeNums.join(',');
+
+// Разделение строки по запятой
+            var split_list = combined_string.split(',');
+
+// Преобразование в числа
+            var result_place_nums = split_list.map(function (item) {
+                return parseInt(item);
+            });
+
+            loadOccupiedSeats(result_place_nums);
+        },
+        error: function (xhr, status, error) {
+            // Handle the error response
+            console.log('Error:', error);
+        }
+    });
+}
+
 function loadOccupiedSeats(reservations) {
 
     let occupiedSeats = reservations;
@@ -49,21 +94,21 @@ function loadOccupiedSeats(reservations) {
         allSeats[i].className = "seat";
     }
     for (let i = 0, len = occupiedSeats.length; i < len; i++) {
-        allSeats[occupiedSeats[i]-1].className = "seat occupied";
+        allSeats[occupiedSeats[i] - 1].className = "seat occupied";
     }
 }
 
 btnBuyTicket.addEventListener('click', (e) => {
     let allSeats = document.querySelectorAll('.row .seat');
-    let numbersOfSelectedSeats = [];
 
     for (let i = 0, len = allSeats.length; i < len; i++) {
         if (allSeats[i].className == 'seat selected') {
-            numbersOfSelectedSeats.push(i+1);
+            numbersOfSelectedSeats.push(i + 1);
         }
     }
     console.log(numbersOfSelectedSeats);
 });
+
 
 // intial count and total
 updateSelectedCount();

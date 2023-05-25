@@ -4,7 +4,7 @@
 <html>
 {% block head %}
     <head>
-        <meta charset="UTF-8"/>        
+        <meta charset="UTF-8"/>
         <!-- <link rel="stylesheet" type="text/css" href="../static/css/reservation-styles.css"/> -->
         <link rel="stylesheet" type="text/css" href="{% static 'css/reservation-styles.css' %}"/>
         <link rel="icon" href=""/>
@@ -57,21 +57,8 @@
                     <script>
                         $(document).ready(function () {
                             $('#your-button{{ session.pk }}').on('click', function () {
-                                // Perform an AJAX request to the view URL
-                                $.ajax({
-                                    url: '../../../../../reservation/',
-                                    method: 'GET',
-                                    data: {session_id: {{session.pk}}},  // Provide the session ID
-                                    success: function (response) {
-                                        // Handle the successful response
-                                        var placeNums = response.place_nums;
-                                        loadOccupiedSeats(placeNums)
-                                    },
-                                    error: function (xhr, status, error) {
-                                        // Handle the error response
-                                        console.log('Error:', error);
-                                    }
-                                });
+                                takeReservationsReload({{ session.pk }});
+                                takeActualReservations({{ session.pk }});
                             });
                         });
                     </script>
@@ -120,14 +107,14 @@
                 <div class="container">
                     <div class="screen"></div>
                     <div class="row">
-                        <div class="seat"></div>
-                        <div class="seat"></div>
-                        <div class="seat"></div>
-                        <div class="seat"></div>
-                        <div class="seat"></div>
-                        <div class="seat"></div>
-                        <div class="seat"></div>
-                        <div class="seat"></div>
+                        <div class="seat occupied"></div>
+                        <div class="seat occupied"></div>
+                        <div class="seat occupied"></div>
+                        <div class="seat occupied"></div>
+                        <div class="seat occupied"></div>
+                        <div class="seat occupied"></div>
+                        <div class="seat occupied"></div>
+                        <div class="seat occupied"></div>
                     </div>
                     <div class="row">
                         <div class="seat occupied"></div>
@@ -196,69 +183,64 @@
     </div>
     <script src="{% static "js/reservation-script.js/" %}"></script>
 
-    <!-- <div id="formBackdrop" class="backdrop">
-        <form method="post">
-
-
-            <label class="form-label">{{ form.client_name.label }}:</label>
-            <input type="text" name="client_name">
-
-            <label class="form-label">{{ form.client_email.label }}:</label>
-            <input type="email" name="client_email">
-
-            <label class="form-label">{{ form.client_phone.label }}:</label>
-            <input type="tel" name="client_phone">
-
-            <label class="form-label">{{ form.place_num.label }}:</label>
-            <input type="number" name="place_num">
-            <input style="display: none" type="number" id="id_session_id" name="session_id" value="{{ session_id }}">
-
-            <button type="submit">Submit</button>
-        </form>
-    </div> -->
 
     <div id="overlay"></div>
     <div id="formBackdrop" class="form-container">
         <h1 class="form-title">Актуалізація інформації</h1>
-        <form action="#">
+        <form action="#" id="Form" method="post">
             {% csrf_token %}
-          <div class="main-user-info">
-            <div class="user-input-box">
-              <label class="form-label">{{ form.client_name.label }}:</label>
-              <input type="text"
-                      id="fullName"
-                      name="client_name"
-                      placeholder="Введіть ваше ім'я"/>
-            </div>
-            <div class="user-input-box">
-              <label class="form-label">{{ form.client_email.label }}:</label>
-              <input type="email"
-                      id="email"
-                      name="client_email"
-                      placeholder="Введіть email"/>
-            </div>
-            <div class="user-input-box">
-              <label class="form-label">{{ form.client_phone.label }}:</label>
-              <input type="tel"
-                      id="phoneNumber"
-                      name="client_phone"
-                      placeholder="Введіть номер телефону"/>
-            </div>
-{#            <div class="user-input-box">#}
-{#              <label for="seatNum">Номер обраного місця</label>#}
-{#              <input type="text"#}
-{#                      id="seatNum"#}
-{#                      name="place_num"#}
-{#                      placeholder="Введіть номер обраного місця у залі"/>#}
-{#            </div>#}
-              <input style="display: none" type="number" id="id_session_id" name="session_id" value="{{ session_id }}">
+            <div class="main-user-info">
+                <div class="user-input-box">
+                    <label class="form-label">{{ form.client_name.label }}:</label>
+                    <input type="text"
+                           id="fullName"
+                           name="client_name"
+                           placeholder="Введіть ваше ім'я"/>
+                </div>
+                <div class="user-input-box">
+                    <label class="form-label">{{ form.client_email.label }}:</label>
+                    <input type="email"
+                           id="email"
+                           name="client_email"
+                           placeholder="Введіть email"/>
+                </div>
+                <div class="user-input-box">
+                    <label class="form-label">{{ form.client_phone.label }}:</label>
+                    <input type="tel"
+                           id="phoneNumber"
+                           name="client_phone"
+                           placeholder="Введіть номер телефону"/>
+                </div>
 
-          </div>
-          <div class="form-submit-btn">
-            <input type="submit" value="Готово">
-          </div>
+                <input type="text"
+                       id="seatNum"
+                       name="place_num"
+                       placeholder="Введіть номер обраного місця у залі">
+                <input style="display: none" type="number" id="id_session_id" name="session_id"
+                       value="{{ session_id }}">
+
+            </div>
+            <div class="form-submit-btn">
+                <button type="button" onclick="submitForm(numbersOfSelectedSeats)">Зарезервувати</button>
+            </div>
         </form>
-      </div>
+    </div>
+    <script>
+        function submitForm(list) {
+
+            var form = document.getElementById('Form');
+            var input1 = document.getElementById('fullName');
+            var input2 = document.getElementById('email');
+            var input3 = document.getElementById('phoneNumber');
+            var input4 = document.getElementById('seatNum');
+            var input5 = document.getElementById('id_session_id');
+
+            input4.value = list;
+            form.submit();
+            console.log(input4.value)
+
+        }
+    </script>
 
     <script>
         $(document).ready(function () {
@@ -273,13 +255,12 @@
                 $("#overlay").toggle();
             });
 
-            $("#overlay").click(function() {
+            $("#overlay").click(function () {
                 $("#formBackdrop").hide();
                 $("#overlay").hide();
             });
         });
     </script>
-
     <footer>
         <div class="footer-container">
             <div class="left-part">

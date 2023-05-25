@@ -33,14 +33,18 @@ class ResevationAPIView(APIView):
             # print(session)
             reservations = Reservation.objects.filter(session_id=session_id)
             places_num = list(reservations.values("place_num"))  # get only place numbers
-            place_nums = [item['place_num'] for item in places_num]  # places queryset into list
+            place_nums = [item['place_num'] for item in places_num]
+            # places queryset into list
+            combine_place_nums = ','.join(place_nums)
+            split_place_nums = combine_place_nums.split(',')
+            result_place_nums = [int(item) for item in split_place_nums]
 
             reg_form = ReservationForm()
 
             context = {
                 'movie': movie,
-                "reservations": reservations,
-                'places_res': place_nums,
+                "reservations": result_place_nums,
+                'places_res': result_place_nums,
                 'form': reg_form,
                 'session_id': session.pk,
                 'sessions': sessions
@@ -53,16 +57,12 @@ class ResevationAPIView(APIView):
         except Session.DoesNotExist:
             return Response({'error': 'Session not found'}, status=status.HTTP_404_NOT_FOUND)
 
-    def post(self, request, session_id, *args, **kwargs):
-
+    def post(self, request, *args, **kwargs):
         form = ReservationForm(request.POST)
+
         if form.is_valid():
-            session = Session.objects.get(pk=session_id)
-            print(session)
-            # form.cleaned_data['session_id'] = session
-            # print(form.session_id)
             form.save()
-            return Response({'success': 'Reservation created'}, status=status.HTTP_201_CREATED)
+            return Response({'success': 'Form Saved'})
         else:
             return Response({'error': 'Form Not Correct'}, status=status.HTTP_400_BAD_REQUEST)
 
@@ -111,7 +111,6 @@ import json
 
 
 def get_reservations(request):
-
     session_id = request.GET.get('session_id')
     reservations = Reservation.objects.filter(session_id=session_id)
     places_num = list(reservations.values("place_num"))  # get only place numbers

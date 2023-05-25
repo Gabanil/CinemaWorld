@@ -176,7 +176,7 @@ class Reservation(models.Model):
     )
     client_phone = models.CharField(max_length=15, validators=[phone_regex], blank=True)
 
-    place_num = models.IntegerField("Місце", blank=False)
+    place_num = models.CharField("Місце", max_length=50, blank=False)
     paid = models.BooleanField("Оплачено", default=False, blank=True)
     date_resevation = models.DateTimeField("Дата та час", default=timezone.now, blank=True)
     session_id = models.ForeignKey(Session, verbose_name="Сеанс", on_delete=models.DO_NOTHING, null=True, blank=False)
