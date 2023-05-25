@@ -4,7 +4,7 @@
 <html>
 {% block head %}
     <head>
-        <meta charset="UTF-8"/>
+        <meta charset="UTF-8"/>        
         <link rel="stylesheet" type="text/css" href="{% static 'css/reservation-styles.css' %}"/>
         <link rel="icon" href=""/>
         <title>Cinema World</title>
@@ -53,7 +53,7 @@
                     <button id='your-button{{ session.pk }}'
                             class="round-button">{{ session.start.time }}, {{ session.start.date }}</button>
 
-                    <script>
+                    <!-- <script>
                         $(document).ready(function () {
                             $('#your-button{{ session.pk }}').on('click', function () {
                                 // Perform an AJAX request to the view URL
@@ -73,7 +73,7 @@
                                 });
                             });
                         });
-                    </script>
+                    </script> -->
                     <div id="reservation-list"></div>
                 {% endfor %}
             </div>
@@ -215,18 +215,67 @@
             <button type="submit">Submit</button>
         </form>
     </div>
+
+    <div id="overlay"></div>
+    <div id="formBackdrop" class="form-container">
+        <h1 class="form-title">Актуалізація інформації</h1>
+        <form action="#">
+          <div class="main-user-info">
+            <div class="user-input-box">
+              <label for="fullName">Ім'я</label>
+              <input type="text"
+                      id="fullName"
+                      name="fullName"
+                      placeholder="Введіть ваше ім'я"/>
+            </div>
+            <div class="user-input-box">
+              <label for="email">Email</label>
+              <input type="email"
+                      id="email"
+                      name="email"
+                      placeholder="Введіть email"/>
+            </div>
+            <div class="user-input-box">
+              <label for="phoneNumber">Телефон</label>
+              <input type="text"
+                      id="phoneNumber"
+                      name="phoneNumber"
+                      placeholder="Введіть номер телефону"/>
+            </div>
+            <div class="user-input-box">
+              <label for="seatNum">Номер обраного місця</label>
+              <input type="text"
+                      id="seatNum"
+                      name="seatNum"
+                      placeholder="Введіть номер обраного місця у залі"/>
+            </div>
+          </div>
+          <div class="form-submit-btn">
+            <input type="submit" value="Готово">
+          </div>
+        </form>
+      </div>
+
     <script>
         $(document).ready(function () {
             // Hide the form backdrop initially
             $("#formBackdrop").hide();
+            $("#overlay").hide();
 
             // Handle button click event
             $("#openFormBtn").click(function () {
                 // Show or hide the form backdrop based on its current visibility
                 $("#formBackdrop").toggle();
+                $("#overlay").toggle();
+            });
+
+            $("#overlay").click(function() {
+                $("#formBackdrop").hide();
+                $("#overlay").hide();
             });
         });
     </script>
+
     <footer>
         <div class="footer-container">
             <div class="left-part">
