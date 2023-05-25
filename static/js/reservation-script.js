@@ -9,6 +9,7 @@ populateUI();
 // loadOccupiedSeats();
 let ticketPrice = 110;
 let numbersOfSelectedSeats = [];
+var actualSessionID;
 
 // Seat click event
 container.addEventListener('click', (e) => {

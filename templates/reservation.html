@@ -18,7 +18,9 @@
     <nav class="nav">
         <ul>
             <li>
-                <img id="logo-img" src="{% static 'logo/CinemaWorldLogo.png' %}" alt="Logo"/>
+                <a href="../../../" style="height: 5px">
+                    <img id="logo-img" src="{% static 'logo/CinemaWorldLogo.png' %}" alt="Logo"/>
+                </a>
             </li>
             <li>
                 <a href="#">Кінотеатри</a>
@@ -59,6 +61,7 @@
                             $('#your-button{{ session.pk }}').on('click', function () {
                                 takeReservationsReload({{ session.pk }});
                                 takeActualReservations({{ session.pk }});
+                                actualSessionID = {{ session.pk }};
                             });
                         });
                     </script>
@@ -216,9 +219,7 @@
                        id="seatNum"
                        name="place_num"
                        placeholder="Введіть номер обраного місця у залі">
-                <input style="display: none" type="number" id="id_session_id" name="session_id"
-                       value="{{ session_id }}">
-
+                <input style="display: none" type="number" id="id_session_id" name="session_id">
             </div>
             <div class="form-submit-btn">
                 <button type="button" onclick="submitForm(numbersOfSelectedSeats)">Зарезервувати</button>
@@ -236,6 +237,7 @@
             var input5 = document.getElementById('id_session_id');
 
             input4.value = list;
+            input5.value = actualSessionID;
             form.submit();
             console.log(input4.value)
 

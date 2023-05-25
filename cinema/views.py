@@ -25,28 +25,16 @@ class MovieDetailAPIView(APIView):
 
 
 class ResevationAPIView(APIView):
-    def get(self, request, pk, session_id):
+    def get(self, request, pk):
         try:
             movie = Movie.objects.get(pk=pk)
             sessions = Session.objects.filter(movie_id=pk)
-            session = Session.objects.get(movie_id=pk, pk=session_id)
-            # print(session)
-            reservations = Reservation.objects.filter(session_id=session_id)
-            places_num = list(reservations.values("place_num"))  # get only place numbers
-            place_nums = [item['place_num'] for item in places_num]
-            # places queryset into list
-            combine_place_nums = ','.join(place_nums)
-            split_place_nums = combine_place_nums.split(',')
-            result_place_nums = [int(item) for item in split_place_nums]
 
             reg_form = ReservationForm()
 
             context = {
                 'movie': movie,
-                "reservations": result_place_nums,
-                'places_res': result_place_nums,
                 'form': reg_form,
-                'session_id': session.pk,
                 'sessions': sessions
 
             }
@@ -78,7 +66,6 @@ class SessionsViewList(APIView):
             'movies': unique_movies
         }
 
-        # print(unique_movies)
         return render(request, "reservation.html")
 
 
@@ -105,11 +92,6 @@ class MovieAvalableSession(APIView):
             return Response({'error': 'Sessions not found'}, status=status.HTTP_404_NOT_FOUND)
 
 
-import json
-
-import json
-
-
 def get_reservations(request):
     session_id = request.GET.get('session_id')
     reservations = Reservation.objects.filter(session_id=session_id)
@@ -120,17 +102,3 @@ def get_reservations(request):
         'place_nums': place_nums,
     }
     return JsonResponse(data)
-#    шаблон вьюшки
-# @swagger_auto_schema(
-#     operation_summary="Get a dish by slug",
-#     operation_description="<b>Retrieve a single dish by its unique slug.</b>",
-#     responses={200: Dish_Serializer()},
-#     tags=["Pages"])
-# def get(self, request, slug):
-#     try:
-#         movies = Movie.objects.all()
-#         # serializer = Dish_Serializer(dish, context={'request': request})
-#         print(movies)
-#         return Response(movies)
-#     except Movie.DoesNotExist:
-#         return Response({'error': 'Movie not found'}, status=status.HTTP_404_NOT_FOUND)
