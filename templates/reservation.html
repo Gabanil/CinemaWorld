@@ -5,6 +5,7 @@
 {% block head %}
     <head>
         <meta charset="UTF-8"/>        
+        <!-- <link rel="stylesheet" type="text/css" href="../static/css/reservation-styles.css"/> -->
         <link rel="stylesheet" type="text/css" href="{% static 'css/reservation-styles.css' %}"/>
         <link rel="icon" href=""/>
         <title>Cinema World</title>
@@ -53,7 +54,7 @@
                     <button id='your-button{{ session.pk }}'
                             class="round-button">{{ session.start.time }}, {{ session.start.date }}</button>
 
-                    <!-- <script>
+                    <script>
                         $(document).ready(function () {
                             $('#your-button{{ session.pk }}').on('click', function () {
                                 // Perform an AJAX request to the view URL
@@ -73,7 +74,7 @@
                                 });
                             });
                         });
-                    </script> -->
+                    </script>
                     <div id="reservation-list"></div>
                 {% endfor %}
             </div>
@@ -195,7 +196,7 @@
     </div>
     <script src="{% static "js/reservation-script.js/" %}"></script>
 
-    <div id="formBackdrop" class="backdrop">
+    <!-- <div id="formBackdrop" class="backdrop">
         <form method="post">
             {% csrf_token %}
 
@@ -214,7 +215,7 @@
 
             <button type="submit">Submit</button>
         </form>
-    </div>
+    </div> -->
 
     <div id="overlay"></div>
     <div id="formBackdrop" class="form-container">
