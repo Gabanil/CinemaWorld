@@ -4,7 +4,7 @@ const total = document.getElementById('total');
 
 //скрипт для резервації
 populateUI();
-loadOccupiedSeats();
+// loadOccupiedSeats();
 let ticketPrice = 110;
 
 // Seat click event
@@ -37,7 +37,7 @@ function populateUI() {
     }
 }
 
-function loadOccupiedSeats() {
+function loadOccupiedSeats(reservations) {
 
     let occupiedSeats = reservations;
 

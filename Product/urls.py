@@ -18,16 +18,17 @@ from django.contrib import admin
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
-from cinema.views import MovieAPIView, ResevationAPIView, MovieDetailAPIView, SessionsViewList, MovieAvalableSession, ReservationTemplate
+from cinema.views import MovieAPIView, ResevationAPIView, MovieDetailAPIView, SessionsViewList, MovieAvalableSession, get_reservations
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("reservation/", ReservationTemplate.as_view()),
+    path("reservation/", get_reservations, name="reservation"),
     path("", MovieAPIView.index),
     path("movie/<int:pk>/", MovieDetailAPIView.as_view()),
     path("session/", SessionsViewList.as_view()),
     path("movie/<int:pk>/sessions/", MovieAvalableSession.as_view()),
     path("movie/<int:pk>/sessions/<int:session_id>/reservation/", ResevationAPIView.as_view()),
+
     ]
     # path("api/v1/", MovieAPIView.as_view(), name="api_test") начало апишки
 
