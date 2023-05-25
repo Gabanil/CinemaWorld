@@ -5,10 +5,10 @@ from .models import Reservation
 
 
 class ReservationForm(forms.ModelForm):
-    client_name = forms.CharField(label="Name")
-    client_email = forms.CharField(label="Email")
-    client_phone = forms.CharField(label="Phone")
-    place_num = forms.IntegerField(label="Place Number")
+    client_name = forms.CharField(label="Імʼя")
+    client_email = forms.CharField(label="Пошта")
+    client_phone = forms.CharField(label="Телефон:")
+    place_num = forms.IntegerField(label="Номер місця")
 
     class Meta:
         model = Reservation

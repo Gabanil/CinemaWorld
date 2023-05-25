@@ -198,7 +198,7 @@
 
     <!-- <div id="formBackdrop" class="backdrop">
         <form method="post">
-            {% csrf_token %}
+
 
             <label class="form-label">{{ form.client_name.label }}:</label>
             <input type="text" name="client_name">
@@ -221,35 +221,38 @@
     <div id="formBackdrop" class="form-container">
         <h1 class="form-title">Актуалізація інформації</h1>
         <form action="#">
+            {% csrf_token %}
           <div class="main-user-info">
             <div class="user-input-box">
-              <label for="fullName">Ім'я</label>
+              <label class="form-label">{{ form.client_name.label }}:</label>
               <input type="text"
                       id="fullName"
-                      name="fullName"
+                      name="client_name"
                       placeholder="Введіть ваше ім'я"/>
             </div>
             <div class="user-input-box">
-              <label for="email">Email</label>
+              <label class="form-label">{{ form.client_email.label }}:</label>
               <input type="email"
                       id="email"
-                      name="email"
+                      name="client_email"
                       placeholder="Введіть email"/>
             </div>
             <div class="user-input-box">
-              <label for="phoneNumber">Телефон</label>
-              <input type="text"
+              <label class="form-label">{{ form.client_phone.label }}:</label>
+              <input type="tel"
                       id="phoneNumber"
-                      name="phoneNumber"
+                      name="client_phone"
                       placeholder="Введіть номер телефону"/>
             </div>
-            <div class="user-input-box">
-              <label for="seatNum">Номер обраного місця</label>
-              <input type="text"
-                      id="seatNum"
-                      name="seatNum"
-                      placeholder="Введіть номер обраного місця у залі"/>
-            </div>
+{#            <div class="user-input-box">#}
+{#              <label for="seatNum">Номер обраного місця</label>#}
+{#              <input type="text"#}
+{#                      id="seatNum"#}
+{#                      name="place_num"#}
+{#                      placeholder="Введіть номер обраного місця у залі"/>#}
+{#            </div>#}
+              <input style="display: none" type="number" id="id_session_id" name="session_id" value="{{ session_id }}">
+
           </div>
           <div class="form-submit-btn">
             <input type="submit" value="Готово">
