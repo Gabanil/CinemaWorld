@@ -65,6 +65,8 @@ class Movie(models.Model):
     genres = models.ManyToManyField(Genre, verbose_name="Жанри")
     world_premiere = models.DateField("Премʼєра в світі", default=date.today)
     duration = models.IntegerField("Тривалість", default=0)
+    available = models.BooleanField("Доступний")
+    future = models.BooleanField("Майбутні")
 
     category = models.ForeignKey(
         Category, verbose_name="Категорія", on_delete=models.SET_NULL, null=True

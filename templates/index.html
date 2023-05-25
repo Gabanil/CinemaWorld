@@ -4,190 +4,189 @@
 <html>
 {% block head %}
     <head>
-        <meta charset="UTF-8" />
+        <meta charset="UTF-8"/>
         <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}"/>
 
-        <link rel="icon" href="" /> 
+        <link rel="icon" href=""/>
         <title>Cinema World</title>
     </head>
 {% endblock head %}
 
 
 {% block content %}
-<body>
+    <body>
     <nav class="nav">
-      <ul>
-        <li>
-            <img id="logo-img" src="{% static 'logo/CinemaWorldLogo.png' %}" alt="Logo" />
-        </li>
-        <li>
-          <a href="#">Кінотеатри</a>
-        </li>
-        <li>
-          <a href="#">Сеанси</a>
-        </li>
-        <li>
-          <a href="#">Локації</a>
-        </li>
-        <li>
-            <a href="#">Про нас</a>
-        </li>
-        <li>
-            <a href="#">Контакти</a>
-        </li>
-        <div class="log-in">
-          <a href="#">Увійти</a>
-        </div>
-      </ul>
+        <ul>
+            <li>
+                <img id="logo-img" src="{% static 'logo/CinemaWorldLogo.png' %}" alt="Logo"/>
+            </li>
+            <li>
+                <a href="#">Кінотеатри</a>
+            </li>
+            <li>
+                <a href="#">Сеанси</a>
+            </li>
+            <li>
+                <a href="#">Локації</a>
+            </li>
+            <li>
+                <a href="#">Про нас</a>
+            </li>
+            <li>
+                <a href="#">Контакти</a>
+            </li>
+            <div class="log-in">
+                <a href="#">Увійти</a>
+            </div>
+        </ul>
     </nav>
 
     <div class="text">
-      <h1>Доступні сеанси</h1>
+        <h1>Доступні сеанси</h1>
     </div>
-    
+
     <!-- slider-aviable-movies -->
-    <section class="slider-aviable-movies"> 
-      <button class="pre-btn"><img src="{% static 'arrow.png' %}" alt=""></button>
-      <button class="nxt-btn"><img src="{% static 'arrow.png' %}" alt=""></button>
-      <div class="product-container">
-          <div class="product-card">
-              <div class="product-image">
-              </div>
-          </div>
-          {% for movie in movies %}
-          <div class="product-card">
-              <div class="product-image">
-                  <a href="movie/{{ movie.pk }}"><img src="media/{{ movie.poster }}" class="product-thumb" alt=""></a>
-                  <!-- <button class="card-btn1">Придбати квиток</button>
-                  <button class="card-btn2" onclick="redirectToDescription()">Опис</button> -->
-              </div>
-          </div>
-          {% endfor %}
-      </div>
+    <section class="slider-aviable-movies">
+        <button class="pre-btn"><img src="{% static 'arrow.png' %}" alt=""></button>
+        <button class="nxt-btn"><img src="{% static 'arrow.png' %}" alt=""></button>
+        <div class="product-container">
+            <div class="product-card">
+                <div class="product-image">
+                </div>
+            </div>
+            {% for movie in available_movies %}
+                <div class="product-card">
+                    <div class="product-image">
+                        <a href="movie/{{ movie.pk }}"><img src="media/{{ movie.poster }}" class="product-thumb" alt=""></a>
+                        <!-- <button class="card-btn1">Придбати квиток</button>
+                        <button class="card-btn2" onclick="redirectToDescription()">Опис</button> -->
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
     </section>
 
 
     <div class="text">
-      <h1>Майбутні сеанси</h1>
+        <h1>Майбутні сеанси</h1>
     </div>
 
-    <!-- <div class="future-movies-container">
-
-        {% for movie in movies %}
-            <div class="dungeonsDragons-div">
-                <img id="dungeonsDragons-img" src="media\{{ movie.poster }}" alt="dungeonsDragons">
-                <h3>{{ movie.title }}</h3>
-              </div>
-        {% endfor %}
-
-{#      <div class="mavka-div">#}
-{#        <img id="mavka-img" src="../static/mavka.png" alt="mavka">#}
-{#        <h3>Мавка: Лісова пісня</h3>#}
-{#      </div>#}
-{#      <div class="65m y ago-div">#}
-{#        <img id="65-img" src="../static/65m.y.ago.png" alt="65m.y.ago">#}
-{#        <h3>65 років до нашої ери</h3>#}
-{#      </div>#}
-    </div> -->
+    {#    <div class="future-movies-container">#}
+    {##}
+    {#        {% for future_movie in future_movies %}#}
+    {#            <div class="dungeonsDragons-div">#}
+    {#                <img id="dungeonsDragons-img" src="media\{{ future_movie.poster }}" alt="dungeonsDragons">#}
+    {#                <h3>{{ future_movie.title }}</h3>#}
+    {#              </div>#}
+    {#        {% endfor %}#}
+    {##}
+    {#    </div>#}
 
     <!-- slider-future-movies -->
-    <section class="slider-future-movies"> 
-      <button class="pre-btn"><img src="{% static 'arrow.png' %}" alt=""></button>
-      <button class="nxt-btn"><img src="{% static 'arrow.png' %}" alt=""></button>
-      <div class="product-container">
-          <div class="product-card">
-              <div class="product-image">
-              </div>
-          </div>
-          {% for movie in movies %}
-          <div class="product-card">
-              <div class="product-image">
-                  <a href="movie/{{ movie.pk }}"><img src="{{ movie.poster.url }}" class="product-thumb" alt=""></a>
-                  <!-- <button class="card-btn1">Придбати квиток</button>
-                  <button class="card-btn2" onclick="redirectToDescription()">Опис</button> -->
-              </div>
-          </div>
-          {% endfor %}
-      </div>
+    <section class="slider-future-movies">
+        <button class="pre-btn"><img src="{% static 'arrow.png' %}" alt=""></button>
+        <button class="nxt-btn"><img src="{% static 'arrow.png' %}" alt=""></button>
+        <div class="product-container">
+            <div class="product-card">
+                <div class="product-image">
+                </div>
+            </div>
+            {% for future_movie in future_movies %}
+                <div class="product-card">
+                    <div class="product-image">
+                        <a href="movie/{{ future_movie.pk }}"><img id="dungeonsDragons-img"
+                                                                   src="media\{{ future_movie.poster }}"
+                                                                   alt="dungeonsDragons" class="product-thumb"></a>
+                        <!-- <button class="card-btn1">Придбати квиток</button>
+                        <button class="card-btn2" onclick="redirectToDescription()">Опис</button> -->
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
     </section>
 
     <script src="{% static 'js/script.js' %}"></script>
 
 
     <div class="text">
-      <h1>Чому саме ми?</h1>
+        <h1>Чому саме ми?</h1>
     </div>
 
     <div class="why-we-container1">
-      <div class="why-we-text">
-        <p>Наші сучасні кінозали не залишать нікого байдужим, 
-          ми створили найбільш зручні умови для вашого прибування у наших кінозалах включивш в них м’які сидіння, 
-          а також використали ліжка замість крісел у Люкс залах задля вашого комфорту
-        </p>
-      </div>
-      <div class="why-we-png">
-        <img id="image-1" src="{% static 'image-1.png' %}" alt="image-1">
-      </div>
+        <div class="why-we-text">
+            <p>Наші сучасні кінозали не залишать нікого байдужим,
+                ми створили найбільш зручні умови для вашого прибування у наших кінозалах включивш в них м’які сидіння,
+                а також використали ліжка замість крісел у Люкс залах задля вашого комфорту
+            </p>
+        </div>
+        <div class="why-we-png">
+            <img id="image-1" src="{% static 'image-1.png' %}" alt="image-1">
+        </div>
     </div>
 
     <div class="why-we-container2">
-      <div class="why-we-png">
-        <img id="image-2" src="{% static 'image-2.png' %}" alt="image-2">
-      </div>
-      <div class="why-we-text">
-        <p>Маємо найзручніші крісла з високоякісних матеріалів щоб перегляд фільмів здавався 10 хвилинною прогулянкою, 
-          а задоволення було одразу помітне
-        </p>
-      </div>
+        <div class="why-we-png">
+            <img id="image-2" src="{% static 'image-2.png' %}" alt="image-2">
+        </div>
+        <div class="why-we-text">
+            <p>Маємо найзручніші крісла з високоякісних матеріалів щоб перегляд фільмів здавався 10 хвилинною
+                прогулянкою,
+                а задоволення було одразу помітне
+            </p>
+        </div>
     </div>
 
     <div class="why-we-container3">
-      <div class="why-we-text">
-        <p>Наші зали забезпечені високоякісними звуковими установками, щоб зробити поглиблення у фільм більш захопливим
-        </p>
-      </div>
-      <div class="why-we-png">
-        <img id="image-3" src="{% static 'image-3.png' %}" alt="image-3">
-      </div>
+        <div class="why-we-text">
+            <p>Наші зали забезпечені високоякісними звуковими установками, щоб зробити поглиблення у фільм більш
+                захопливим
+            </p>
+        </div>
+        <div class="why-we-png">
+            <img id="image-3" src="{% static 'image-3.png' %}" alt="image-3">
+        </div>
     </div>
 
     <div class="why-we-container4">
-      <div class="why-we-png">
-        <img id="image-4" src="{% static 'image-4.png' %}" alt="image-4">
-      </div>
-      <div class="why-we-text">
-        <p>Маємо найзручніші крісла з високоякісних матеріалів щоб перегляд фільмів здавався 10 хвилинною прогулянкою, 
-          а задоволення було одразу помітне
-        </p>
-      </div>
+        <div class="why-we-png">
+            <img id="image-4" src="{% static 'image-4.png' %}" alt="image-4">
+        </div>
+        <div class="why-we-text">
+            <p>Маємо найзручніші крісла з високоякісних матеріалів щоб перегляд фільмів здавався 10 хвилинною
+                прогулянкою,
+                а задоволення було одразу помітне
+            </p>
+        </div>
     </div>
 
     <div class="text">
-      <h1>Як нас знайти?</h1>
+        <h1>Як нас знайти?</h1>
     </div>
 
     <div class="text">
-      <p>Ми знаходимося за адресою вулиця Милославська, 10а, ТЦ “Милославський”</p>
+        <p>Ми знаходимося за адресою вулиця Милославська, 10а, ТЦ “Милославський”</p>
     </div>
 
     <div class="google-map-div">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3772.578148398327!2d30.598597851139832!3d50.531580895780024!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4d11558602d07%3A0x92719dd3551fe0d8!2z0KLQpiAi0JzQuNC70L7RgdC70LDQstGB0YzQutC40Lki!5e0!3m2!1suk!2sua!4v1682854674117!5m2!1suk!2sua" width="800" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3772.578148398327!2d30.598597851139832!3d50.531580895780024!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4d11558602d07%3A0x92719dd3551fe0d8!2z0KLQpiAi0JzQuNC70L7RgdC70LDQstGB0YzQutC40Lki!5e0!3m2!1suk!2sua!4v1682854674117!5m2!1suk!2sua"
+                width="800" height="250" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
 
     <footer>
-      <div class="footer-container">
-        <div class="left-part">          
-          <a href="#">Сеанси</a>
-          <a href="#">Про нас</a>
-          <a href="#">Контакти</a>
+        <div class="footer-container">
+            <div class="left-part">
+                <a href="#">Сеанси</a>
+                <a href="#">Про нас</a>
+                <a href="#">Контакти</a>
+            </div>
+            <div class="right-part">
+                <h5>Зателефонуйте нам</h5>
+                <h5>+380 66 666 66 66</h5>
+                <h5>Copyright 2023</h5>
+            </div>
         </div>
-        <div class="right-part">
-          <h5>Зателефонуйте нам</h5>
-          <h5>+380 66 666 66 66</h5>
-          <h5>Copyright 2023</h5>
-        </div>
-      </div>
     </footer>
-  </body>
+    </body>
 {% endblock content %}
 </html>

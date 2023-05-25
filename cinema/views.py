@@ -10,7 +10,14 @@ from .forms import ReservationForm
 class MovieAPIView(APIView):
     def index(request):
         movies = Movie.objects.all()
-        return render(request, "index.html", {"movies": movies})
+        available_movies = movies.filter(available=True)
+        future_movies = movies.filter(future=True)
+
+        contex ={
+            'available_movies': available_movies,
+            'future_movies': future_movies
+        }
+        return render(request, "index.html", contex)
 
 
 class MovieDetailAPIView(APIView):
