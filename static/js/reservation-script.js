@@ -2,6 +2,8 @@ const container = document.querySelector('.container');
 const seats = document.querySelectorAll('.row .seat:not(.occupied');
 const total = document.getElementById('total');
 
+const btnBuyTicket = document.getElementById('openFormBtn');
+
 //скрипт для резервації
 populateUI();
 // loadOccupiedSeats();
@@ -50,6 +52,18 @@ function loadOccupiedSeats(reservations) {
         allSeats[occupiedSeats[i]-1].className = "seat occupied";
     }
 }
+
+btnBuyTicket.addEventListener('click', (e) => {
+    let allSeats = document.querySelectorAll('.row .seat');
+    let numbersOfSelectedSeats = [];
+
+    for (let i = 0, len = allSeats.length; i < len; i++) {
+        if (allSeats[i].className == 'seat selected') {
+            numbersOfSelectedSeats.push(i+1);
+        }
+    }
+    document.getElementById("test").innerText = numbersOfSelectedSeats;
+});
 
 // intial count and total
 updateSelectedCount();
