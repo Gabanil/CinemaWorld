@@ -62,7 +62,7 @@ btnBuyTicket.addEventListener('click', (e) => {
             numbersOfSelectedSeats.push(i+1);
         }
     }
-    document.getElementById("test").innerText = numbersOfSelectedSeats;
+    console.log(numbersOfSelectedSeats);
 });
 
 // intial count and total
