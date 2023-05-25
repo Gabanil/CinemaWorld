@@ -64,14 +64,7 @@
                                     success: function (response) {
                                         // Handle the successful response
                                         var placeNums = response.place_nums;
-                                        // Process the place numbers as needed
-                                        // For example, you can display them in a list
-                                        var list = '<ul>';
-                                        for (var i = 0; i < placeNums.length; i++) {
-                                            list += '<li style="color: #141414">' + placeNums[i] + '</li>';
-                                        }
-                                        list += '</ul>';
-                                        $('#reservation-list').html(list);
+                                        loadOccupiedSeats(placeNums)
                                     },
                                     error: function (xhr, status, error) {
                                         // Handle the error response
@@ -102,10 +95,6 @@
                     currentButton.disabled = true;
                 });
             }
-        </script>
-
-        <script>
-            var reservations = {{ places_res|safe }};
         </script>
 
         <div class="reserv-right-part">
