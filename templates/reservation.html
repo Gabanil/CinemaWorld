@@ -46,21 +46,42 @@
             <h2>{{ movie.title }}</h2>
         </div>
         <div class="reserv-middle-part">
-            <!-- <form>
-                <label for="time">Choose a time:</label>
-                <select id="time" name="time">
-                    {% for session in sessions %}
-                    <option value="{{ session.pk }}/reservation/">{{ session.start }}</option>
-                    {% endfor %}
-                </select>
-
-                <br>
-
-                <input type="submit" value="Book Session">
-            </form> -->
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
             <div class="buttons">
+
                 {% for session in sessions %}
-                    <button class="round-button">{{ session.start.time }}, {{ session.start.date }}</button>
+                    <button id='your-button{{ session.pk }}'
+                            class="round-button">{{ session.start.time }}, {{ session.start.date }}</button>
+
+                    <script>
+                        $(document).ready(function () {
+                            $('#your-button{{ session.pk }}').on('click', function () {
+                                // Perform an AJAX request to the view URL
+                                $.ajax({
+                                    url: '../../../../../reservation/',
+                                    method: 'GET',
+                                    data: {session_id: {{session.pk}}},  // Provide the session ID
+                                    success: function (response) {
+                                        // Handle the successful response
+                                        var placeNums = response.place_nums;
+                                        // Process the place numbers as needed
+                                        // For example, you can display them in a list
+                                        var list = '<ul>';
+                                        for (var i = 0; i < placeNums.length; i++) {
+                                            list += '<li style="color: #141414">' + placeNums[i] + '</li>';
+                                        }
+                                        list += '</ul>';
+                                        $('#reservation-list').html(list);
+                                    },
+                                    error: function (xhr, status, error) {
+                                        // Handle the error response
+                                        console.log('Error:', error);
+                                    }
+                                });
+                            });
+                        });
+                    </script>
+                    <div id="reservation-list"></div>
                 {% endfor %}
             </div>
         </div>
@@ -81,6 +102,10 @@
                     currentButton.disabled = true;
                 });
             }
+        </script>
+
+        <script>
+            var reservations = {{ places_res|safe }};
         </script>
 
         <div class="reserv-right-part">
@@ -179,9 +204,6 @@
             </div>
         </div>
     </div>
-    <script>
-        var reservations = {{ places_res|safe }};
-    </script>
     <script src="{% static "js/reservation-script.js/" %}"></script>
 
     <div id="formBackdrop" class="backdrop">
@@ -204,8 +226,6 @@
             <button type="submit">Submit</button>
         </form>
     </div>
-
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function () {
             // Hide the form backdrop initially
