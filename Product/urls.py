@@ -27,7 +27,7 @@ urlpatterns = [
     path("movie/<int:pk>/", MovieDetailAPIView.as_view()),
     path("session/", SessionsViewList.as_view()),
     path("movie/<int:pk>/sessions/", MovieAvalableSession.as_view()),
-    path("movie/<int:pk>/sessions/<int:session_id>/reservation/", ResevationAPIView.as_view()),
+    path("movie/<int:pk>/reservation/", ResevationAPIView.as_view()),
 
     ]
     # path("api/v1/", MovieAPIView.as_view(), name="api_test") начало апишки

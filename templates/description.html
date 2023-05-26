@@ -11,7 +11,7 @@
 
         <script>
             function openNewPage() {
-                window.open("/movie/{{ movie.pk }}/sessions/"); // Замените URL-адресом нужной вам страницы
+                window.open("/movie/{{ movie.pk }}/reservation/");
             }
         </script>
     </head>
@@ -54,10 +54,12 @@
         </div>
         <div class="template-right-part">
             <p>{{ movie.description }}</p>
-            <p>Режисер: </p>
-            <p>Актори: </p>
+            <p>Країна: {{ movie.country }}</p>
+            <p>Рік: {{ movie.year }}</p>
             <p>Тривалість: {{ movie.duration }} хв.</p>
-            <button onclick="openNewPage()">Придбати квиток</button>
+            {% if movie.available == True %}
+                <button onclick="openNewPage()">Придбати квиток</button>
+            {% endif %}
         </div>
     </div>
 

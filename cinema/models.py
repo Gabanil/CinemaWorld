@@ -65,6 +65,8 @@ class Movie(models.Model):
     genres = models.ManyToManyField(Genre, verbose_name="Жанри")
     world_premiere = models.DateField("Премʼєра в світі", default=date.today)
     duration = models.IntegerField("Тривалість", default=0)
+    available = models.BooleanField("Доступний")
+    future = models.BooleanField("Майбутні")
 
     category = models.ForeignKey(
         Category, verbose_name="Категорія", on_delete=models.SET_NULL, null=True
@@ -176,7 +178,7 @@ class Reservation(models.Model):
     )
     client_phone = models.CharField(max_length=15, validators=[phone_regex], blank=True)
 
-    place_num = models.IntegerField("Місце", blank=False)
+    place_num = models.CharField("Місце", max_length=50, blank=False)
     paid = models.BooleanField("Оплачено", default=False, blank=True)
     date_resevation = models.DateTimeField("Дата та час", default=timezone.now, blank=True)
     session_id = models.ForeignKey(Session, verbose_name="Сеанс", on_delete=models.DO_NOTHING, null=True, blank=False)
