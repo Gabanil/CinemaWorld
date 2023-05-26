@@ -71,7 +71,7 @@
         <h1>Майбутні сеанси</h1>
     </div>
 
-    {#    <div class="future-movies-container">#}
+    <!-- {#    <div class="future-movies-container">#}
     {##}
     {#        {% for future_movie in future_movies %}#}
     {#            <div class="dungeonsDragons-div">#}
@@ -80,7 +80,7 @@
     {#              </div>#}
     {#        {% endfor %}#}
     {##}
-    {#    </div>#}
+    {#    </div>#} -->
 
     <!-- slider-future-movies -->
     <section class="slider-future-movies">
@@ -94,9 +94,9 @@
             {% for future_movie in future_movies %}
                 <div class="product-card">
                     <div class="product-image">
-                        <a href="movie/{{ future_movie.pk }}"><img id="dungeonsDragons-img"
+                        <a href="movie/{{ future_movie.pk }}"><img id="movie"
                                                                    src="media\{{ future_movie.poster }}"
-                                                                   alt="dungeonsDragons" class="product-thumb"></a>
+                                                                   alt="movies" class="product-thumb"></a>
                         <!-- <button class="card-btn1">Придбати квиток</button>
                         <button class="card-btn2" onclick="redirectToDescription()">Опис</button> -->
                     </div>

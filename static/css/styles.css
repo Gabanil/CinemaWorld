@@ -132,6 +132,7 @@ body {
   height: 370px;
   margin-right: 10px;
   transition: all 0.3s ease;
+  border: 10px solid black;
 }
 .product-card:hover {
   flex: 0 0 auto;
