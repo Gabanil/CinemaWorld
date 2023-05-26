@@ -60,18 +60,16 @@ function takeActualReservations(session_id) {
 
 function takeReservationsReload(session_id) {
     $.ajax({
-        url: '../../../../../reservation/',
+        url: '../../../reservation/',
         method: 'GET',
-        data: {session_id: (session_id)},  // Provide the session ID
+        data: {session_id: (session_id)},
         success: function (response) {
             // Handle the successful response
             var placeNums = response.place_nums;
             var combined_string = placeNums.join(',');
 
-// Разделение строки по запятой
             var split_list = combined_string.split(',');
 
-// Преобразование в числа
             var result_place_nums = split_list.map(function (item) {
                 return parseInt(item);
             });
