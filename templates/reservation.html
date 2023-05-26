@@ -1,7 +1,7 @@
 {% load static %}
 
 <!DOCTYPE html>
-<html>
+<html lang="uk">
 {% block head %}
     <head>
         <meta charset="UTF-8"/>
@@ -71,12 +71,12 @@
         </div>
 
         <script>
-            var buttons = document.getElementsByClassName("round-button");
-            for (var i = 0; i < buttons.length; i++) {
+            let buttons = document.getElementsByClassName("round-button");
+            for (let i = 0; i < buttons.length; i++) {
                 buttons[i].addEventListener("click", function () {
-                    var currentButton = this;
+                    let currentButton = this;
 
-                    var prevButton = document.querySelector(".round-button.clicked");
+                    let prevButton = document.querySelector(".round-button.clicked");
                     if (prevButton && prevButton !== currentButton) {
                         prevButton.classList.remove("clicked");
                         prevButton.disabled = false;
@@ -195,25 +195,28 @@
             {% csrf_token %}
             <div class="main-user-info">
                 <div class="user-input-box">
-                    <label class="form-label">{{ form.client_name.label }}:</label>
+                    <label class="form-label" for="fullName">{{ form.client_name.label }}:</label>
                     <input type="text"
                            id="fullName"
                            name="client_name"
                            placeholder="Введіть ваше ім'я"/>
                 </div>
                 <div class="user-input-box">
-                    <label class="form-label">{{ form.client_email.label }}:</label>
+                    <label class="form-label" for="email">{{ form.client_email.label }}:</label>
                     <input type="email"
                            id="email"
                            name="client_email"
                            placeholder="Введіть email"/>
                 </div>
                 <div class="user-input-box">
-                    <label class="form-label">{{ form.client_phone.label }}:</label>
+                    <label class="form-label" for="phoneNumber">{{ form.client_phone.label }}:</label>
                     <input type="tel"
                            id="phoneNumber"
                            name="client_phone"
-                           placeholder="Введіть номер телефону"/>
+                           placeholder="Введіть номер телефону"
+                           pattern="\d*"
+                           oninput="this.value = this.value.replace(/[^0-9]/g, '')"/>
+
                 </div>
 
                 <input type="text"
@@ -231,12 +234,9 @@
     <script>
         function submitForm(list) {
 
-            var form = document.getElementById('Form');
-            var input1 = document.getElementById('fullName');
-            var input2 = document.getElementById('email');
-            var input3 = document.getElementById('phoneNumber');
-            var input4 = document.getElementById('seatNum');
-            var input5 = document.getElementById('id_session_id');
+            let form = document.getElementById('Form');
+            let input4 = document.getElementById('seatNum');
+            let input5 = document.getElementById('id_session_id');
 
             input4.value = list;
             input5.value = actualSessionID;
