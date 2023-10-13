@@ -23,7 +23,7 @@ class Category(models.Model):
 class Actor(models.Model):
     """Актори та режисери"""
     name = models.CharField("Імʼя", max_length=100)
-    age = models.PositiveSmallIntegerField("Вік", default=0)
+    age = models.PositiveSmallIntegerField("Вік")
     description = models.TextField("Опис")
     image = models.ImageField("Зображення", upload_to="actors/")
 
@@ -64,7 +64,7 @@ class Movie(models.Model):
     actors = models.ManyToManyField(Actor, verbose_name="Актори", related_name="film_actor")
     genres = models.ManyToManyField(Genre, verbose_name="Жанри")
     world_premiere = models.DateField("Премʼєра в світі", default=date.today)
-    duration = models.IntegerField("Тривалість", default=0)
+    duration = models.IntegerField("Тривалість")
     available = models.BooleanField("Доступний")
     future = models.BooleanField("Майбутні")
 
