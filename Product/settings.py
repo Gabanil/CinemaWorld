@@ -13,9 +13,14 @@ import os
 from pathlib import Path
 
 import cinema.apps
+import pymysql
+
+pymysql.version_info = (1,4,6,'final',0)
+pymysql.install_as_MySQLdb()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+#BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
@@ -26,7 +31,7 @@ SECRET_KEY = 'django-insecure-!6u1h3pot6*6($odp_o!#swjpkitgxkg#n+a@so=#r6$bo3ea9
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['192.168.64.2']
 
 # Application definition
 
@@ -78,9 +83,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'CinemaDatabase',
-        'USER': 'admin',
-        'PASSWORD': 'Hz5GqR5PSPW+j%9',
-        'HOST': '192.168.64.2',
+        'USER': 'root',
+        'PASSWORD': '1234admin1234',
+        'HOST': 'localhost',
         'PORT': '3306',
         'OPTIONS': {
             'unix_socket': '/var/run/mysqld/mysqld.sock',
@@ -120,7 +125,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 STATICFILES_DIRS = (
