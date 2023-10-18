@@ -31,7 +31,7 @@ SECRET_KEY = 'django-insecure-!6u1h3pot6*6($odp_o!#swjpkitgxkg#n+a@so=#r6$bo3ea9
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.64.2']
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -80,12 +80,12 @@ WSGI_APPLICATION = 'Product.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
+   'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'CinemaDatabase',
-        'USER': 'root',
+        'USER': 'admin',
         'PASSWORD': '1234admin1234',
-        'HOST': 'localhost',
+        'HOST': '192.168.64.2',
         'PORT': '3306',
         'OPTIONS': {
             'unix_socket': '/var/run/mysqld/mysqld.sock',
